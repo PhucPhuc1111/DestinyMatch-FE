@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPTIU-BE", "FPTIU-BE\FPTIU-BE.csproj", "{6280644D-288E-45D6-A563-DE43047F7E76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FPTIU_Api", "FPTIU-BE\FPTIU_Api.csproj", "{6280644D-288E-45D6-A563-DE43047F7E76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPTIU_DataAccess", "FPTIU_DataAccess\FPTIU_DataAccess.csproj", "{A84E1CED-A1B8-4B90-9AD2-AF6E0515147D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPTIU_Domain", "FPTIU_Domain\FPTIU_Domain.csproj", "{32F4069A-7684-4BA3-9D61-7E6B266E1BC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{6280644D-288E-45D6-A563-DE43047F7E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6280644D-288E-45D6-A563-DE43047F7E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6280644D-288E-45D6-A563-DE43047F7E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A84E1CED-A1B8-4B90-9AD2-AF6E0515147D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A84E1CED-A1B8-4B90-9AD2-AF6E0515147D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A84E1CED-A1B8-4B90-9AD2-AF6E0515147D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A84E1CED-A1B8-4B90-9AD2-AF6E0515147D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32F4069A-7684-4BA3-9D61-7E6B266E1BC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F4069A-7684-4BA3-9D61-7E6B266E1BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F4069A-7684-4BA3-9D61-7E6B266E1BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F4069A-7684-4BA3-9D61-7E6B266E1BC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FPTIU-BE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63a0daaa912ed7a94974ff6e98ea62e7260258c8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b06793d89be90d35aa2659d8a8565af3e661cdd")]
 [assembly: System.Reflection.AssemblyProductAttribute("FPTIU-BE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FPTIU-BE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "FPTIU_Domain/1.0.0": {
+        "runtime": {
+          "FPTIU_Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FPTIU_Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
