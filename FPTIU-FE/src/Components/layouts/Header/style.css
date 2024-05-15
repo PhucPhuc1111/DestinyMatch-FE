@@ -1,0 +1,50 @@
+.header {
+  background: #fffcf4;
+}
+
+.header.fixed {
+  position: sticky;
+  top: -28px;
+  z-index: 1;
+}
+
+.header .body {
+  display: flex;
+  align-items: center;
+  padding: 36px 0 8px;
+}
+
+.nav {
+  margin-right: auto;
+}
+.nav ul {
+  display: flex;
+}
+.action .loginbtn,
+.nav a {
+  padding: 8px 21px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.75; /* 175% */
+  color: #5f5b53;
+  text-align: center;
+  position: relative;
+}
+
+.nav a:hover,
+.action .loginbtn:hover,
+.nav li.active a {
+  text-shadow: 1px 0 0 currentColor;
+  color: #171100;
+}
+.nav li.active a::after {
+  position: absolute;
+  left: 21px;
+  bottom: 6px;
+  display: block;
+  content: "";
+  border-radius: 1px;
+  background: #171100;
+  width: 12px;
+  height: 2px;
+}
