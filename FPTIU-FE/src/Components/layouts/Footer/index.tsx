@@ -11,9 +11,8 @@ export default function Footer() {
             <div className="column">
               <FaHandHoldingHeart fontSize="40px" className="logo" />
               <p className="desc">
-                There really is something for everyone on Tinder. Want to get
-                into a relationship? You got it. Trying to find some new
-                friends?
+                Discover your campus connection! Join our community of students.
+                Your match is just a click away!
               </p>
               <div className="socials">
                 <FaFacebookF className="icon" />

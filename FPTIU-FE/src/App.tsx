@@ -1,12 +1,12 @@
-import Header from "./Components/layouts/Header";
-import Footer from "./Components/layouts/Footer";
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
 function App() {
   return (
-    <>
-      <Header />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
