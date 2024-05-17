@@ -1,6 +1,6 @@
 import "./style.css";
-import { FaHandHoldingHeart } from "react-icons/fa";
 import { FaFacebookF, FaLinkedin, FaInstagram } from "react-icons/fa";
+import FooterIcon from "../../../assets/img/icon.png";
 
 export default function Footer() {
   return (
@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="main-content">
           <div className="row">
             <div className="column">
-              <FaHandHoldingHeart fontSize="40px" className="logo" />
+              <img src={FooterIcon} alt="" className="footer-icon" />
               <p className="desc">
                 Discover your campus connection! Join our community of students.
                 Your match is just a click away!

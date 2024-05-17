@@ -13,6 +13,10 @@
   border-radius: 20px;
 }
 
+.modal,
+.modal:focus {
+  outline: none;
+}
 .auth {
   border: none;
   display: flex;
@@ -30,6 +34,12 @@
   text-align: center;
   width: 540px;
   margin: 0 auto;
+}
+
+.auth-content-inner .auth-icon {
+  width: 70px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .auth-heading {

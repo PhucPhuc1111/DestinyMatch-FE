@@ -7,14 +7,15 @@ import { FaFacebook } from "react-icons/fa";
 import { useState } from "react";
 import Modal from "react-modal";
 
-export default function LoginModal({ isOpen, onRequestClose }) {
+export default function RegisterModal({ isOpen, onRequestClose }) {
   const [username, setUsername] = useState("saomaynguvay@gmail.com");
   const [password, setPassword] = useState("123");
+  const [repassword, setRePassword] = useState("123");
   const [mess, setMess] = useState(
     "Let's create your account and matching with your friends"
   );
 
-  function handleLogin(e) {
+  function handleRegister(e) {
     e.preventDefault();
     if (username === "saomaynguvay@gmail.com" && password === "123") {
       onRequestClose();
@@ -38,7 +39,7 @@ export default function LoginModal({ isOpen, onRequestClose }) {
             <img src={LoginIcon} alt="" className="auth-icon" />
             <h1 className="auth-heading">Welcome to Destiny Match</h1>
             <p className="auth-desc">{mess}</p>
-            <form action="" className="auth-form" onSubmit={handleLogin}>
+            <form action="" className="auth-form" onSubmit={handleRegister}>
               <div className="form-group">
                 <div className="form-text-input">
                   <input
@@ -64,8 +65,20 @@ export default function LoginModal({ isOpen, onRequestClose }) {
                   />
                   <CiLock className="input-icon" />
                 </div>
+                <div className="form-text-input">
+                  <input
+                    value={repassword}
+                    type="password"
+                    name=""
+                    id=""
+                    className="form-input"
+                    placeholder="Confirm Password"
+                    onChange={(e) => setRePassword(e.target.value)}
+                  />
+                  <CiLock className="input-icon" />
+                </div>
               </div>
-              <button className="auth-btn-group">Login</button>
+              <button className="auth-btn-group">Register</button>
             </form>
             <button className="auth-btn-group">
               <FcGoogle className="auth-btn-icon" /> Login with Google

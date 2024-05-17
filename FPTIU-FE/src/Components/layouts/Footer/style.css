@@ -17,6 +17,12 @@
   width: 35%;
 }
 
+.footer .footer-icon {
+  width: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 .footer .desc {
   margin-top: 18px;
   max-width: 267px;

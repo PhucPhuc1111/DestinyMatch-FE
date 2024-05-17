@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div style={{ height: "1000px" }}>Content</div>
+      <div style={{ height: "1000px" }}></div>
       <Footer />
     </>
   );

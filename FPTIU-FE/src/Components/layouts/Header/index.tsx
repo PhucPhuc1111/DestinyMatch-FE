@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./style.css";
-import { FaHandHoldingHeart } from "react-icons/fa";
 import LoginModal from "../../../pages/Login/Login";
+import myImage from "../../../assets/img/icon.png";
 
 export default function Header() {
   // Login Component variables
@@ -44,10 +44,7 @@ export default function Header() {
     <header className="header fixed">
       <div className="main-content">
         <div className="body">
-          <FaHandHoldingHeart
-            className="logo"
-            style={{ fontSize: "35px", marginRight: "15px" }}
-          />
+          <img src={myImage} alt="" className="logo-header" />
           <nav className="nav">
             <ul>
               {Navbar.map((item) => (
@@ -67,7 +64,7 @@ export default function Header() {
               Login
             </a>
             <LoginModal isOpen={modalIsOpen} onRequestClose={closeModal} />
-            <a href="#!" className="btn">
+            <a href="" className="btn">
               Sign Up
             </a>
           </div>
