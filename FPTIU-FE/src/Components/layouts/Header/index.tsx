@@ -6,6 +6,7 @@ import myImage from "../../../assets/img/icon.png";
 export default function Header() {
   // Login Component variables
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [register, setRegister] = useState(false);
 
   function openModal() {
     setModalIsOpen(true);
@@ -40,6 +41,16 @@ export default function Header() {
   const handleNavClick = (item: string) => {
     setIsActive(item);
   };
+
+  function handleOpenLogin() {
+    setModalIsOpen(true);
+    setRegister(false);
+  }
+
+  function handleOpenRegister() {
+    setModalIsOpen(true);
+    setRegister(true);
+  }
   return (
     <header className="header fixed">
       <div className="main-content">
@@ -60,11 +71,16 @@ export default function Header() {
             </ul>
           </nav>
           <div className="action">
-            <a className="loginbtn" onClick={openModal}>
+            <a className="loginbtn" onClick={handleOpenLogin}>
               Login
             </a>
-            <LoginModal isOpen={modalIsOpen} onRequestClose={closeModal} />
-            <a href="" className="btn">
+            <LoginModal
+              isOpen={modalIsOpen}
+              onRequestClose={closeModal}
+              register={register}
+              OpenRegister={handleOpenRegister}
+            />
+            <a className="btn" onClick={handleOpenRegister}>
               Sign Up
             </a>
           </div>

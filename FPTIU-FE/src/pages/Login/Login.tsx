@@ -7,9 +7,15 @@ import { FaFacebook } from "react-icons/fa";
 import { useState } from "react";
 import Modal from "react-modal";
 
-export default function LoginModal({ isOpen, onRequestClose }) {
+export default function LoginModal({
+  isOpen,
+  onRequestClose,
+  register,
+  OpenRegister,
+}) {
   const [username, setUsername] = useState("saomaynguvay@gmail.com");
   const [password, setPassword] = useState("123");
+  const [repassword, setRePassword] = useState("123");
   const [mess, setMess] = useState(
     "Let's create your account and matching with your friends"
   );
@@ -64,8 +70,28 @@ export default function LoginModal({ isOpen, onRequestClose }) {
                   />
                   <CiLock className="input-icon" />
                 </div>
+                {register ? (
+                  <>
+                    <div className="form-text-input">
+                      <input
+                        value={repassword}
+                        type="password"
+                        name=""
+                        id=""
+                        className="form-input"
+                        placeholder="Cofirm Password"
+                        onChange={(e) => setRePassword(e.target.value)}
+                      />
+                      <CiLock className="input-icon" />
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
               </div>
-              <button className="auth-btn-group">Login</button>
+              <button className="auth-btn-group login-btn">
+                {register ? "Register" : "Login"}
+              </button>
             </form>
             <button className="auth-btn-group">
               <FcGoogle className="auth-btn-icon" /> Login with Google
@@ -73,14 +99,18 @@ export default function LoginModal({ isOpen, onRequestClose }) {
             <button className="auth-btn-group">
               <FaFacebook className="auth-btn-icon" /> Login with Facebook
             </button>
-            <div className="form-group form-group-inline">
-              <span className="form-checkbox-label">
-                you don't have account ?
-              </span>
-              <a href="" className="auth-link">
-                Register
-              </a>
-            </div>
+            {register ? (
+              <></>
+            ) : (
+              <div className="form-group form-group-inline">
+                <span className="form-checkbox-label">
+                  you don't have account ?
+                </span>
+                <span className="auth-link" onClick={OpenRegister}>
+                  Register
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </div>

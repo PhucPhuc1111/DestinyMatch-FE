@@ -26,7 +26,7 @@
 
 .auth-content-inner {
   border-radius: 20px;
-  padding: 50px 16px;
+  padding: 30px 16px;
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -43,14 +43,14 @@
 }
 
 .auth-heading {
-  margin: 30px 0px;
+  margin: 20px 0px;
   font-size: 2.5rem;
   font-weight: 500;
 }
 
 .auth-desc {
   padding: 0px 20px;
-  margin-top: 10px;
+  margin-top: 5px;
   color: rgb(229, 116, 23);
 }
 
@@ -96,6 +96,11 @@
   cursor: pointer;
   line-height: 40px;
   margin-bottom: 15px;
+}
+
+.login-btn {
+  color: white;
+  background: linear-gradient(70.06deg, #378d95 -5%, #7cf7e2 106%);
 }
 
 .auth-btn-group:hover {

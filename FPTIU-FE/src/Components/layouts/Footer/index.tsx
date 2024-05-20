@@ -1,5 +1,6 @@
 import "./style.css";
 import { FaFacebookF, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import FooterIcon from "../../../assets/img/icon.png";
 
 export default function Footer() {
@@ -18,6 +19,7 @@ export default function Footer() {
                 <FaFacebookF className="icon" />
                 <FaInstagram className="icon" />
                 <FaLinkedin className="icon" />
+                <FaXTwitter className="icon" />
               </div>
             </div>
             <div className="column">
