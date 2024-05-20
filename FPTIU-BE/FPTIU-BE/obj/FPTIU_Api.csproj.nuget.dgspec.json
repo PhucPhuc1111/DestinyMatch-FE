@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\trinh\\Downloads\\FPTIU\\FPTIU-BE\\FPTIU-BE\\FPTIU_Api.csproj": {}
+    "C:\\Users\\trinh\\Downloads\\FPTIU\\FPTIU-BE\\FPTIU-BE\\FPTIU_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\trinh\\Downloads\\FPTIU\\FPTIU-BE\\FPTIU-BE\\FPTIU_Api.csproj": {
+    "C:\\Users\\trinh\\Downloads\\FPTIU\\FPTIU-BE\\FPTIU-BE\\FPTIU_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\trinh\\Downloads\\FPTIU\\FPTIU-BE\\FPTIU-BE\\FPTIU_Api.csproj",
-        "projectName": "FPTIU_Api",
-        "projectPath": "C:\\Users\\trinh\\Downloads\\FPTIU\\FPTIU-BE\\FPTIU-BE\\FPTIU_Api.csproj",
+        "projectUniqueName": "C:\\Users\\trinh\\Downloads\\FPTIU\\FPTIU-BE\\FPTIU-BE\\FPTIU_API.csproj",
+        "projectName": "FPTIU_API",
+        "projectPath": "C:\\Users\\trinh\\Downloads\\FPTIU\\FPTIU-BE\\FPTIU-BE\\FPTIU_API.csproj",
         "packagesPath": "C:\\Users\\trinh\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\trinh\\Downloads\\FPTIU\\FPTIU-BE\\FPTIU-BE\\obj\\",
         "projectStyle": "PackageReference",
@@ -64,6 +64,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -142,19 +146,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
+            "AutoMapper": {
               "target": "Package",
-              "version": "[8.0.4, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[8.0.4, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[13.0.1, )"
             }
           },
           "imports": [
@@ -221,6 +215,22 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

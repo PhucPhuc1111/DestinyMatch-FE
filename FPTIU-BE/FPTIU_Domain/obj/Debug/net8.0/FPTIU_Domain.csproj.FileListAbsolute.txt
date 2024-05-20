@@ -1,6 +1,8 @@
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\bin\Debug\net8.0\FPTIU_Domain.deps.json
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\bin\Debug\net8.0\FPTIU_Domain.runtimeconfig.json
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\bin\Debug\net8.0\FPTIU_Domain.dll
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\bin\Debug\net8.0\FPTIU_Domain.pdb
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\obj\Debug\net8.0\FPTIU_Domain.csproj.AssemblyReference.cache
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\obj\Debug\net8.0\FPTIU_Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\obj\Debug\net8.0\FPTIU_Domain.AssemblyInfoInputs.cache
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\obj\Debug\net8.0\FPTIU_Domain.AssemblyInfo.cs
@@ -9,4 +11,5 @@ C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\obj\Debug\net8.0\FPTIU_Doma
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\obj\Debug\net8.0\FPTIU_Domain.dll
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\obj\Debug\net8.0\refint\FPTIU_Domain.dll
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\obj\Debug\net8.0\FPTIU_Domain.pdb
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\obj\Debug\net8.0\FPTIU_Domain.genruntimeconfig.cache
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_Domain\obj\Debug\net8.0\ref\FPTIU_Domain.dll
