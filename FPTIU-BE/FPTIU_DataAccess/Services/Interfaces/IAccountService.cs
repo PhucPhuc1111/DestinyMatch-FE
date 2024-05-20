@@ -1,4 +1,4 @@
-﻿using FPTIU_Domain.DTOs;
+﻿using FPTIU_Domain.DTOs.Request;
 using FPTIU_Domain.Models;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
@@ -14,6 +14,7 @@ namespace FPTIU_DataAccess.Services.Interfaces
 
         Task<Account> Update(AccountDTO account);
 
-        Task Delete(int id);
+        Task Delete(Guid id);
+        Task<string> GenerateJSONWebTokenAsync(Account acc);
     }
 }

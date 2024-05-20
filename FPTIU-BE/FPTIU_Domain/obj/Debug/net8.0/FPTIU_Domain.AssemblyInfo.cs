@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FPTIU_Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7b90ff11d60f70ef2b5edbfe7fd9469642ce41b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0298372f8c56d4e7281bafab35dbb05fbee4e09a")]
 [assembly: System.Reflection.AssemblyProductAttribute("FPTIU_Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FPTIU_Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -11,7 +11,7 @@ public partial class Member
 
     public string? Introduce { get; set; }
 
-    public int? Age { get; set; }
+    public DateOnly? Dob { get; set; }
 
     public bool? Gender { get; set; }
 
@@ -21,9 +21,9 @@ public partial class Member
 
     public Guid? AccountId { get; set; }
 
-    public Guid? UniversityId { get; set; }
+    public string? UniversityCode { get; set; }
 
-    public Guid? MajorId { get; set; }
+    public string? MajorCode { get; set; }
 
     public virtual Account? Account { get; set; }
 
@@ -31,7 +31,7 @@ public partial class Member
 
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
-    public virtual Major? Major { get; set; }
+    public virtual Major? MajorCodeNavigation { get; set; }
 
     public virtual ICollection<MatchActivity> MatchActivities { get; set; } = new List<MatchActivity>();
 
@@ -43,7 +43,7 @@ public partial class Member
 
     public virtual ICollection<Picture> Pictures { get; set; } = new List<Picture>();
 
-    public virtual University? University { get; set; }
+    public virtual University? UniversityCodeNavigation { get; set; }
 
     public virtual ICollection<Hobby> Hobbies { get; set; } = new List<Hobby>();
 }

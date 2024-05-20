@@ -7,7 +7,7 @@ namespace FPTIU_API.ProjectConnfig.Database
     {
         public static IServiceCollection ConfigureServices(IServiceCollection services, IConfiguration config)
         {
-            services.AddDbContext<DestinyMatchContext>(options => options.UseSqlServer(config["ConnectionStrings:DefaultConnection"]));
+            services.AddDbContext<DestinyMatchContext>(options => options.UseSqlServer(config["ConnectionStrings:OnlineConnection"]));
             return services;
         }
     }

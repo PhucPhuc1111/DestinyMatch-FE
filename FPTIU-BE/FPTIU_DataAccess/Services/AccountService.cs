@@ -1,8 +1,13 @@
 ﻿using AutoMapper;
 using FPTIU_DataAccess.Services.Interfaces;
-using FPTIU_Domain.DTOs;
+using FPTIU_Domain.DTOs.Request;
 using FPTIU_Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace FPTIU_DataAccess.Services
 {
@@ -10,11 +15,41 @@ namespace FPTIU_DataAccess.Services
     {
         private readonly DestinyMatchContext _context;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _config;
 
-        public AccountService(DestinyMatchContext context, IMapper mapper)
+        public AccountService(DestinyMatchContext context, IMapper mapper, IConfiguration config)
         {
             _context = context;
             _mapper = mapper;
+            _config = config;
+        }
+
+        public async Task<string> GenerateJSONWebTokenAsync(Account acc)
+        {
+            var member = await _context.Members.FirstOrDefaultAsync(x => x.AccountId == acc.Id);
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Email, acc.Email),
+                new Claim(ClaimTypes.Role, acc.Role.ToString())
+            };
+
+            if (member != null)
+            {
+                claims.Add(new Claim(ClaimTypes.Name, member.Fullname ?? string.Empty));
+                claims.Add(new Claim(ClaimTypes.StreetAddress, member.Address ?? string.Empty));
+                claims.Add(new Claim(ClaimTypes.Gender, member.Gender.HasValue ? (member.Gender.Value ? "male" : "female") : "unknown"));
+            }
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("thisiskeynhamaybanyeuoi123456789012"));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(securityKey.ToString(),
+              securityKey.ToString(),
+              claims,
+              expires: DateTime.Now.AddDays(1),
+              signingCredentials: credentials);
+
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
         public async Task Delete(int id)
@@ -53,7 +88,8 @@ namespace FPTIU_DataAccess.Services
             }
             else
             {
-                await _context.Accounts.AddAsync(acc);
+
+                await _context.Accounts.AddAsync(_mapper.Map<Account>(account));
                 await _context.SaveChangesAsync();
             }
         }
@@ -68,6 +104,20 @@ namespace FPTIU_DataAccess.Services
             _mapper.Map(account, acc);
             await _context.SaveChangesAsync();
             return acc;
+        }
+
+        public async Task Delete(Guid accountid)
+        {
+            var acc = await _context.Accounts.FindAsync(accountid);
+            if (acc == null)
+            {
+                throw new Exception("Account not found");
+            }
+            else
+            {
+                _context.Accounts.Remove(acc);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

@@ -11,5 +11,11 @@ public partial class Account
 
     public string? Password { get; set; }
 
+    public DateTime? TimeStamp { get; set; }
+
+    public int? Role { get; set; }
+
+    public string? Status { get; set; }
+
     public virtual ICollection<Member> Members { get; set; } = new List<Member>();
 }

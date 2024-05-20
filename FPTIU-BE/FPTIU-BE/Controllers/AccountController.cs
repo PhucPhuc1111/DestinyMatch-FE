@@ -1,5 +1,5 @@
 ﻿using FPTIU_DataAccess.Services.Interfaces;
-using FPTIU_Domain.DTOs;
+using FPTIU_Domain.DTOs.Request;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,11 +30,13 @@ namespace FPTIU_API.Controllers
         public async Task<IActionResult> Login([FromBody] AccountDTO request)
         {
             var result = await _accountService.Login(request);
+
+            var JWT = await _accountService.GenerateJSONWebTokenAsync(result);
             if (result == null)
             {
                 return StatusCode(StatusCodes.Status401Unauthorized);
             }
-            return Ok(result);
+            return Ok(JWT);
         }
 
         [HttpPost("register")]
@@ -45,5 +47,11 @@ namespace FPTIU_API.Controllers
             return Ok("Register account success");
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] Guid accountid)
+        {
+            await _accountService.Delete(accountid);
+            return Ok("Delete account success");
+        }
     }
 }

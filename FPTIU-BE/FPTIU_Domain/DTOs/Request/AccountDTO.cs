@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FPTIU_Domain.DTOs
+namespace FPTIU_Domain.DTOs.Request
 {
     public class AccountDTO
     {
