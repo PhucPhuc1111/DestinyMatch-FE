@@ -1,3 +1,7 @@
+using FPTIU_API.ProjectConnfig.Database;
+using FPTIU_API.ProjectConnfig.Mapper;
+using FPTIU_API.ProjectConnfig.ServiceExtension;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(MappingEntities));
+
+SqlServerDbConfig.ConfigureServices(builder.Services, builder.Configuration);
+ServiceExtension.AddServices(builder.Services);
 
 var app = builder.Build();
 
@@ -21,5 +29,4 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();

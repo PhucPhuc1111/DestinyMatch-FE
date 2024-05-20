@@ -1,5 +1,4 @@
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\bin\Debug\net8.0\FPTIU_DataAccess.deps.json
-C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\bin\Debug\net8.0\FPTIU_DataAccess.runtimeconfig.json
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\bin\Debug\net8.0\FPTIU_DataAccess.dll
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\bin\Debug\net8.0\FPTIU_DataAccess.pdb
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\bin\Debug\net8.0\FPTIU_Domain.dll
@@ -14,5 +13,4 @@ C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Debug\net8.0\FPTIU_
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Debug\net8.0\FPTIU_DataAccess.dll
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Debug\net8.0\refint\FPTIU_DataAccess.dll
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Debug\net8.0\FPTIU_DataAccess.pdb
-C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Debug\net8.0\FPTIU_DataAccess.genruntimeconfig.cache
 C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Debug\net8.0\ref\FPTIU_DataAccess.dll
