@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
-namespace DataAccess;
+namespace DataAccess.Models;
 
 public partial class DestinyMatchContext : DbContext
 {
@@ -43,41 +41,22 @@ public partial class DestinyMatchContext : DbContext
 
     public virtual DbSet<University> Universities { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer(GetConnectionString());
-    private string GetConnectionString()
-    {
-        string root = Directory.GetParent(Directory.GetCurrentDirectory())?.FullName ?? "";
-        string apiDirectory = Path.Combine(root, "DestinyMatch-API");
-        IConfiguration config = new ConfigurationBuilder()
-        .SetBasePath(apiDirectory)
-        .AddJsonFile("appsettings.Development.json", true, true)
-        .Build();
-        var strConn = config["ConnectionStrings:DefaultConnectionStringDB"];
-
-        return strConn;
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Account>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Account__3214EC07D154088A");
+            entity.HasKey(e => e.Id).HasName("PK__Account__3214EC074CF7B2B8");
 
             entity.ToTable("Account");
 
-            entity.HasIndex(e => e.Email, "UQ__Account__A9D105342FE40758").IsUnique();
-
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.Status).HasMaxLength(20);
             entity.Property(e => e.TimeStamp).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<Authentication>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Authenti__3214EC07CD30C1CA");
+            entity.HasKey(e => e.Id).HasName("PK__Authenti__3214EC070DDA970A");
 
             entity.ToTable("Authentication");
 
@@ -87,12 +66,12 @@ public partial class DestinyMatchContext : DbContext
 
             entity.HasOne(d => d.Member).WithMany(p => p.Authentications)
                 .HasForeignKey(d => d.MemberId)
-                .HasConstraintName("FK__Authentic__Membe__6EF57B66");
+                .HasConstraintName("FK__Authentic__Membe__693CA210");
         });
 
         modelBuilder.Entity<Feedback>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Feedback__3214EC07DF383E5F");
+            entity.HasKey(e => e.Id).HasName("PK__Feedback__3214EC07095A371D");
 
             entity.ToTable("Feedback");
 
@@ -101,16 +80,14 @@ public partial class DestinyMatchContext : DbContext
 
             entity.HasOne(d => d.Member).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.MemberId)
-                .HasConstraintName("FK__Feedback__Member__6B24EA82");
+                .HasConstraintName("FK__Feedback__Member__656C112C");
         });
 
         modelBuilder.Entity<Hobby>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Hobby__3214EC076A3E8BE5");
+            entity.HasKey(e => e.Id).HasName("PK__Hobby__3214EC0747E2E4C7");
 
             entity.ToTable("Hobby");
-
-            entity.HasIndex(e => e.Name, "UQ__Hobby__737584F6F1501B90").IsUnique();
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.Name).HasMaxLength(50);
@@ -121,34 +98,35 @@ public partial class DestinyMatchContext : DbContext
                     r => r.HasOne<Member>().WithMany()
                         .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__HobbyMemb__Membe__4D94879B"),
+                        .HasConstraintName("FK__HobbyMemb__Membe__48CFD27E"),
                     l => l.HasOne<Hobby>().WithMany()
                         .HasForeignKey("HobbyId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__HobbyMemb__Hobby__4CA06362"),
+                        .HasConstraintName("FK__HobbyMemb__Hobby__47DBAE45"),
                     j =>
                     {
-                        j.HasKey("HobbyId", "MemberId").HasName("PK__HobbyMem__9A710F7E95DC0BBD");
+                        j.HasKey("HobbyId", "MemberId").HasName("PK__HobbyMem__9A710F7EE1D06A17");
                         j.ToTable("HobbyMember");
                     });
         });
 
         modelBuilder.Entity<Major>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Major__3214EC0772596637");
+            entity.HasKey(e => e.Code).HasName("PK__Major__A25C5AA6C9FF6B61");
 
             entity.ToTable("Major");
 
-            entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
+            entity.Property(e => e.Code).HasMaxLength(10);
+            entity.Property(e => e.UniversityCode).HasMaxLength(10);
 
-            entity.HasOne(d => d.University).WithMany(p => p.Majors)
-                .HasForeignKey(d => d.UniversityId)
-                .HasConstraintName("FK__Major__Universit__3C69FB99");
+            entity.HasOne(d => d.UniversityCodeNavigation).WithMany(p => p.Majors)
+                .HasForeignKey(d => d.UniversityCode)
+                .HasConstraintName("FK__Major__Universit__398D8EEE");
         });
 
         modelBuilder.Entity<Match>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Match__3214EC077774D1A9");
+            entity.HasKey(e => e.Id).HasName("PK__Match__3214EC0725A601A1");
 
             entity.ToTable("Match");
 
@@ -157,12 +135,12 @@ public partial class DestinyMatchContext : DbContext
 
             entity.HasOne(d => d.Member).WithMany(p => p.Matches)
                 .HasForeignKey(d => d.MemberId)
-                .HasConstraintName("FK__Match__MemberId__5DCAEF64");
+                .HasConstraintName("FK__Match__MemberId__5812160E");
         });
 
         modelBuilder.Entity<MatchActivity>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__MatchAct__3214EC077E96B934");
+            entity.HasKey(e => e.Id).HasName("PK__MatchAct__3214EC07596D4CF6");
 
             entity.ToTable("MatchActivity");
 
@@ -172,39 +150,41 @@ public partial class DestinyMatchContext : DbContext
 
             entity.HasOne(d => d.Match).WithMany(p => p.MatchActivities)
                 .HasForeignKey(d => d.MatchId)
-                .HasConstraintName("FK__MatchActi__Membe__619B8048");
+                .HasConstraintName("FK__MatchActi__Membe__5BE2A6F2");
 
             entity.HasOne(d => d.Member).WithMany(p => p.MatchActivities)
                 .HasForeignKey(d => d.MemberId)
-                .HasConstraintName("FK__MatchActi__Membe__628FA481");
+                .HasConstraintName("FK__MatchActi__Membe__5CD6CB2B");
         });
 
         modelBuilder.Entity<Member>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Member__3214EC0790BD4740");
+            entity.HasKey(e => e.Id).HasName("PK__Member__3214EC072ECB10DA");
 
             entity.ToTable("Member");
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.Fullname).HasMaxLength(100);
+            entity.Property(e => e.MajorCode).HasMaxLength(10);
             entity.Property(e => e.Status).HasMaxLength(20);
+            entity.Property(e => e.UniversityCode).HasMaxLength(10);
 
             entity.HasOne(d => d.Account).WithMany(p => p.Members)
                 .HasForeignKey(d => d.AccountId)
-                .HasConstraintName("FK__Member__AccountI__47DBAE45");
+                .HasConstraintName("FK__Member__AccountI__4316F928");
 
-            entity.HasOne(d => d.Major).WithMany(p => p.Members)
-                .HasForeignKey(d => d.MajorId)
-                .HasConstraintName("FK__Member__MajorId__49C3F6B7");
+            entity.HasOne(d => d.MajorCodeNavigation).WithMany(p => p.Members)
+                .HasForeignKey(d => d.MajorCode)
+                .HasConstraintName("FK__Member__MajorCod__44FF419A");
 
-            entity.HasOne(d => d.University).WithMany(p => p.Members)
-                .HasForeignKey(d => d.UniversityId)
-                .HasConstraintName("FK__Member__Universi__48CFD27E");
+            entity.HasOne(d => d.UniversityCodeNavigation).WithMany(p => p.Members)
+                .HasForeignKey(d => d.UniversityCode)
+                .HasConstraintName("FK__Member__Universi__440B1D61");
         });
 
         modelBuilder.Entity<MemberPackage>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__MemberPa__3214EC07F5B366A7");
+            entity.HasKey(e => e.Id).HasName("PK__MemberPa__3214EC07AB939F3E");
 
             entity.ToTable("MemberPackage");
 
@@ -214,16 +194,16 @@ public partial class DestinyMatchContext : DbContext
 
             entity.HasOne(d => d.Member).WithMany(p => p.MemberPackages)
                 .HasForeignKey(d => d.MemberId)
-                .HasConstraintName("FK__MemberPac__Membe__59063A47");
+                .HasConstraintName("FK__MemberPac__Membe__534D60F1");
 
             entity.HasOne(d => d.Package).WithMany(p => p.MemberPackages)
                 .HasForeignKey(d => d.PackageId)
-                .HasConstraintName("FK__MemberPac__Packa__59FA5E80");
+                .HasConstraintName("FK__MemberPac__Packa__5441852A");
         });
 
         modelBuilder.Entity<Message>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Message__3214EC072ED12F50");
+            entity.HasKey(e => e.Id).HasName("PK__Message__3214EC0768C0F20A");
 
             entity.ToTable("Message");
 
@@ -232,29 +212,26 @@ public partial class DestinyMatchContext : DbContext
 
             entity.HasOne(d => d.Match).WithMany(p => p.Messages)
                 .HasForeignKey(d => d.MatchId)
-                .HasConstraintName("FK__Message__MemberI__66603565");
+                .HasConstraintName("FK__Message__MemberI__60A75C0F");
 
             entity.HasOne(d => d.Member).WithMany(p => p.Messages)
                 .HasForeignKey(d => d.MemberId)
-                .HasConstraintName("FK__Message__MemberI__6754599E");
+                .HasConstraintName("FK__Message__MemberI__619B8048");
         });
 
         modelBuilder.Entity<Package>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Package__3214EC07376FA702");
+            entity.HasKey(e => e.Id).HasName("PK__Package__3214EC07FDEE0C27");
 
             entity.ToTable("Package");
 
-            entity.HasIndex(e => e.Code, "UQ__Package__A25C5AA724118AC9").IsUnique();
-
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.Code).HasMaxLength(20);
             entity.Property(e => e.Name).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Picture>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Picture__3214EC070732C357");
+            entity.HasKey(e => e.Id).HasName("PK__Picture__3214EC075430D3D6");
 
             entity.ToTable("Picture");
 
@@ -262,19 +239,16 @@ public partial class DestinyMatchContext : DbContext
 
             entity.HasOne(d => d.Member).WithMany(p => p.Pictures)
                 .HasForeignKey(d => d.MemberId)
-                .HasConstraintName("FK__Picture__MemberI__5165187F");
+                .HasConstraintName("FK__Picture__MemberI__4CA06362");
         });
 
         modelBuilder.Entity<University>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Universi__3214EC07A901442A");
+            entity.HasKey(e => e.Code).HasName("PK__Universi__A25C5AA6EBE4C402");
 
             entity.ToTable("University");
 
-            entity.HasIndex(e => e.Code, "UQ__Universi__A25C5AA72D06EDBA").IsUnique();
-
-            entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.Code).HasMaxLength(20);
+            entity.Property(e => e.Code).HasMaxLength(10);
         });
 
         OnModelCreatingPartial(modelBuilder);
