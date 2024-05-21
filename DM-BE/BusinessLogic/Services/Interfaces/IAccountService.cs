@@ -1,8 +1,7 @@
 ﻿using DataAccess.DTOs.Request;
 using DataAccess.Models;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
-namespace FPTIU_DataAccess.Services.Interfaces
+namespace BusinessLogic.Services.Interfaces
 {
     public interface IAccountService
     {

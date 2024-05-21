@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FPTIU_DataAccess.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -8,6 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using DataAccess.Models;
 using DataAccess.DTOs.Request;
+using BusinessLogic.Services.Interfaces;
 
 namespace BusinessLogic.Services
 {
@@ -29,8 +29,8 @@ namespace BusinessLogic.Services
             var member = await _context.Members.FirstOrDefaultAsync(x => x.AccountId == acc.Id);
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Email, acc.Email),
-                new Claim(ClaimTypes.Role, acc.Role.ToString())
+                new Claim(ClaimTypes.Email, acc.Email ?? string.Empty),
+                new Claim(ClaimTypes.Role, acc.Role.ToString() ?? string.Empty)
             };
 
             if (member != null)

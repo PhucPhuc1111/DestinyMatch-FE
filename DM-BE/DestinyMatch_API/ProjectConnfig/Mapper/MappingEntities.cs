@@ -2,7 +2,7 @@
 using DataAccess.DTOs.Request;
 using DataAccess.Models;
 
-namespace FPTIU_API.ProjectConnfig.Mapper
+namespace DestinyMatch_API.ProjectConnfig.Mapper
 {
     public class MappingEntities : Profile
     {

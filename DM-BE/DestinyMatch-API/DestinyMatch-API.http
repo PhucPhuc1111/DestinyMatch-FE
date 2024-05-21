@@ -1,6 +1,0 @@
-@DestinyMatch_API_HostAddress = http://localhost:5209
-
-GET {{DestinyMatch_API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
