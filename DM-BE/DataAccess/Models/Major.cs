@@ -5,15 +5,13 @@ namespace DataAccess.Models;
 
 public partial class Major
 {
-    public Guid Id { get; set; }
-
-    public string? Code { get; set; }
+    public string Code { get; set; } = null!;
 
     public string? Name { get; set; }
 
-    public Guid? UniversityId { get; set; }
+    public string? UniversityCode { get; set; }
 
     public virtual ICollection<Member> Members { get; set; } = new List<Member>();
 
-    public virtual University? University { get; set; }
+    public virtual University? UniversityCodeNavigation { get; set; }
 }
