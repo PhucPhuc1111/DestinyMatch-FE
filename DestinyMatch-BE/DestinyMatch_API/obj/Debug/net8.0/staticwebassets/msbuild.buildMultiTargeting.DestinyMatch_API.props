@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\DestinyMatch_API.props" />
+</Project>

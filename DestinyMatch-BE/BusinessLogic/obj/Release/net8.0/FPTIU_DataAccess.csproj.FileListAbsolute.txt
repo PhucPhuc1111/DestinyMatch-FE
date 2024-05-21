@@ -1,0 +1,16 @@
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\bin\Release\net8.0\FPTIU_DataAccess.deps.json
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\bin\Release\net8.0\FPTIU_DataAccess.dll
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\bin\Release\net8.0\FPTIU_DataAccess.pdb
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\bin\Release\net8.0\FPTIU_Domain.dll
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\bin\Release\net8.0\FPTIU_Domain.pdb
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Release\net8.0\FPTIU_DataAccess.csproj.AssemblyReference.cache
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Release\net8.0\FPTIU_DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Release\net8.0\FPTIU_DataAccess.AssemblyInfoInputs.cache
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Release\net8.0\FPTIU_DataAccess.AssemblyInfo.cs
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Release\net8.0\FPTIU_DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Release\net8.0\FPTIU_DataAccess.sourcelink.json
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Release\net8.0\FPTIU_Da.794FDB56.Up2Date
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Release\net8.0\FPTIU_DataAccess.dll
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Release\net8.0\refint\FPTIU_DataAccess.dll
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Release\net8.0\FPTIU_DataAccess.pdb
+C:\Users\trinh\Downloads\FPTIU\FPTIU-BE\FPTIU_DataAccess\obj\Release\net8.0\ref\FPTIU_DataAccess.dll
