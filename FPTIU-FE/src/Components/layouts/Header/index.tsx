@@ -1,12 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./style.css";
 import LoginModal from "../../../pages/Login/Login";
 import myImage from "../../../assets/img/icon.png";
 
-export default function Header() {
+interface NavbarItem {
+  title: string;
+  path: string;
+  id: number;
+  src: string;
+}
+
+const Header: React.FC = () => {
   // Login Component variables
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [register, setRegister] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [register, setRegister] = useState<boolean>(false);
 
   function openModal() {
     setModalIsOpen(true);
@@ -16,8 +23,8 @@ export default function Header() {
     setModalIsOpen(false);
   }
 
-  //Header variable
-  const Navbar = [
+  // Header variable
+  const Navbar: NavbarItem[] = [
     {
       title: "Home",
       path: "/",
@@ -37,13 +44,15 @@ export default function Header() {
       src: "/",
     },
   ];
-  const [isActive, setIsActive] = useState("Home");
+
+  const [isActive, setIsActive] = useState<string>("Home");
+
   const handleNavClick = (item: string) => {
     setIsActive(item);
   };
 
   function handleOpenLogin() {
-    setModalIsOpen(true);
+    openModal();
     setRegister(false);
   }
 
@@ -51,11 +60,12 @@ export default function Header() {
     setModalIsOpen(true);
     setRegister(true);
   }
+
   return (
     <header className="header fixed">
       <div className="main-content">
         <div className="body">
-          <img src={myImage} alt="" className="logo-header" />
+          <img src={myImage} alt="Logo" className="logo-header" />
           <nav className="nav">
             <ul>
               {Navbar.map((item) => (
@@ -88,4 +98,6 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+
+export default Header;
