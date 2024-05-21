@@ -1,0 +1,15 @@
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\bin\Debug\net8.0\DataAccess.deps.json
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\bin\Debug\net8.0\DataAccess.runtimeconfig.json
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\bin\Debug\net8.0\DataAccess.dll
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\bin\Debug\net8.0\DataAccess.pdb
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\obj\Debug\net8.0\DataAccess.csproj.AssemblyReference.cache
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\obj\Debug\net8.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\obj\Debug\net8.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\obj\Debug\net8.0\DataAccess.AssemblyInfo.cs
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\obj\Debug\net8.0\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\obj\Debug\net8.0\DataAccess.sourcelink.json
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\obj\Debug\net8.0\DataAccess.dll
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\obj\Debug\net8.0\refint\DataAccess.dll
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\obj\Debug\net8.0\DataAccess.pdb
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\obj\Debug\net8.0\DataAccess.genruntimeconfig.cache
+C:\Users\trinh\Downloads\FPTIU\DestinyMatch-BE\DataAccess\obj\Debug\net8.0\ref\DataAccess.dll
