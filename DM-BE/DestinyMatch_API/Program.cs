@@ -1,6 +1,6 @@
 using DestinyMatch_API.ProjectConnfig.Database;
+using DestinyMatch_API.ProjectConnfig.Mapper;
 using DestinyMatch_API.ProjectConnfig.ServiceExtension;
-using FPTIU_API.ProjectConnfig.Mapper;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,49 +12,28 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MappingEntities));
-
-SqlServerDbConfig.ConfigureServices(builder.Services, builder.Configuration);
-ServiceExtension.AddServices(builder.Services);
-builder.Services.AddSwaggerGen(opt =>
+builder.Services.AddCors(options =>
 {
-    opt.SwaggerDoc("v1", new OpenApiInfo { Title = "FAMS", Version = "v1" });
-
-    opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    options.AddPolicy("AllowAll", builder =>
     {
-        In = ParameterLocation.Header,
-        Description = "Please enter token",
-        Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        BearerFormat = "JWT",
-        Scheme = "bearer"
-    });
-
-    opt.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            Array.Empty<string>()
-        }
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
     });
 });
+SqlServerDbConfig.ConfigureServices(builder.Services, builder.Configuration);
+ServiceExtension.AddServices(builder.Services);
 
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

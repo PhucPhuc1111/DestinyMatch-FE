@@ -1,5 +1,5 @@
 ﻿using BusinessLogic.Services;
-using FPTIU_DataAccess.Services.Interfaces;
+using BusinessLogic.Services.Interfaces;
 
 namespace DestinyMatch_API.ProjectConnfig.ServiceExtension
 {

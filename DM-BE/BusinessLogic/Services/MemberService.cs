@@ -1,8 +1,8 @@
-﻿using FPTIU_DataAccess.Services.Interfaces;
+﻿using BusinessLogic.Services.Interfaces;
 using DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace FPTIU_DataAccess.Services
+namespace BusinessLogic.Services
 {
     public class MemberService : IMemberService
     {
