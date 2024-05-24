@@ -119,10 +119,10 @@ create table [MatchRequest]
 (
 	Id uniqueidentifier default newid() primary key,
 	[CreateAt] datetime default CURRENT_TIMESTAMP,
+	[Status] nvarchar(30) default N'Chưa Phản Hồi',
 
 	FromId uniqueidentifier foreign key references [Member](Id),
-	ToId uniqueidentifier foreign key references [Member](Id),
-	[Status] nvarchar(30) default N'Chưa Phản Hồi'
+	ToId uniqueidentifier foreign key references [Member](Id)
 );
 create index idx_FromId on [MatchRequest](FromId);
 create index idx_ToId on [MatchRequest](ToId);
@@ -149,11 +149,9 @@ create table [Message]
 	[Status] nvarchar(30) default N'Đã gửi',
 
 	ConversationId uniqueidentifier references [Conversation](Id),
-	SenderId uniqueidentifier foreign key references [Member](Id),
-	ReceiverId uniqueidentifier foreign key references [Member](Id)
+	SenderId uniqueidentifier foreign key references [Member](Id)
 );
 create index idx_SenderId on [Message](SenderId);
-create index idx_ReceiverId on [Message](ReceiverId);
 go
 
 create table [Feedback]

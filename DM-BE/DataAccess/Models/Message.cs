@@ -17,11 +17,7 @@ public partial class Message
 
     public Guid? SenderId { get; set; }
 
-    public Guid? ReceiverId { get; set; }
-
     public virtual Conversation? Conversation { get; set; }
-
-    public virtual Member? Receiver { get; set; }
 
     public virtual Member? Sender { get; set; }
 }

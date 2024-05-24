@@ -45,9 +45,7 @@ public partial class Member
 
     public virtual ICollection<MemberPackage> MemberPackages { get; set; } = new List<MemberPackage>();
 
-    public virtual ICollection<Message> MessageReceivers { get; set; } = new List<Message>();
-
-    public virtual ICollection<Message> MessageSenders { get; set; } = new List<Message>();
+    public virtual ICollection<Message> Messages { get; set; } = new List<Message>();
 
     public virtual ICollection<Picture> Pictures { get; set; } = new List<Picture>();
 

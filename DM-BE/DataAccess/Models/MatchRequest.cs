@@ -9,11 +9,11 @@ public partial class MatchRequest
 
     public DateTime? CreateAt { get; set; }
 
+    public string? Status { get; set; }
+
     public Guid? FromId { get; set; }
 
     public Guid? ToId { get; set; }
-
-    public string? Status { get; set; }
 
     public virtual Member? From { get; set; }
 
