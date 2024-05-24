@@ -24,6 +24,7 @@ a {
 }
 
 .btn {
+  cursor: pointer;
   padding: 0 16px;
   display: inline-block;
   min-width: 135px;

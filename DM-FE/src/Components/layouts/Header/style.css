@@ -28,6 +28,7 @@
 }
 .action .loginbtn,
 .nav a {
+  cursor: pointer;
   padding: 8px 21px;
   font-size: 1.6rem;
   font-weight: 400;
