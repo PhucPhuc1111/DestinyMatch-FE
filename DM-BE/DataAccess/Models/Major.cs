@@ -11,9 +11,5 @@ public partial class Major
 
     public string? Name { get; set; }
 
-    public Guid? UniversityId { get; set; }
-
     public virtual ICollection<Member> Members { get; set; } = new List<Member>();
-
-    public virtual University? University { get; set; }
 }

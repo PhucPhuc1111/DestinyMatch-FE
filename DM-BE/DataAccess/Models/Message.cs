@@ -7,15 +7,21 @@ public partial class Message
 {
     public Guid Id { get; set; }
 
-    public string? Content { get; set; }
+    public string Content { get; set; } = null!;
 
-    public DateTime? TimeStamp { get; set; }
+    public DateTime? SentAt { get; set; }
 
-    public Guid? MatchId { get; set; }
+    public string? Status { get; set; }
 
-    public Guid? MemberId { get; set; }
+    public Guid? ConversationId { get; set; }
 
-    public virtual Match? Match { get; set; }
+    public Guid? SenderId { get; set; }
 
-    public virtual Member? Member { get; set; }
+    public Guid? ReceiverId { get; set; }
+
+    public virtual Conversation? Conversation { get; set; }
+
+    public virtual Member? Receiver { get; set; }
+
+    public virtual Member? Sender { get; set; }
 }

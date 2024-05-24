@@ -1,32 +1,28 @@
 ﻿use DestinyMatch;
 go
-
+--admin@DestinyMatch.com', '12345', 'admin','working'),
+--moderator@DestinyMatch.com', '12345', 'moderator', 'working'),
+--hoangphse172789@fpt.edu.vn', '14112003', 'moderator', 'working'),
+--newbie@university.edu.vn', '12345', 'member', default),
+--an.nguyen@example.com', '12345', 'member', 'experienced'),
 --=============[RESET DATA]=============--
 delete from [Authentication];
 delete from [Feedback];
-delete from [Message];
-delete from [MatchActivity];
-delete from [Match];
+delete from [Picture];
 delete from [MemberPackage];
 delete from [Package];
-delete from [Picture];
 delete from [HobbyMember];
+delete from [Hobby];
+delete from [Message];
+delete from [Conversation];
+delete from [MatchRequest];
 delete from [Member];
 delete from [Account];
-delete from [Hobby];
 delete from [Major];
 delete from [University];
 go
 
 --=============[INSERT DATA]=============--
-insert into [Account](Email,[Password],[TimeStamp],[Role],[Status]) values
-('admin@DestinyMatch.com', '12345', '2024-5-20', '1','working'),
-('moderator@DestinyMatch.com', '12345', '2024-5-20', '2', 'working'),
-('hoangphse172789@fpt.edu.vn', '14112003','2024-5-20', '1', 'working'),
-('newbie@university.edu.vn', '12345', '2024-5-20', '3', 'newbie'),
-('experienced@university.edu.vn', '12345', '2024-5-20', '3', 'experienced');
-go
-
 insert into [University](Code, [Name]) values
 ('ANH', N'Học Viện An Ninh Nhân Dân'),
 ('ANS', N'Đại Học An Ninh Nhân Dân'),
@@ -342,6 +338,37 @@ insert into [University](Code, [Name]) values
 ('ZPH', N'Trường Sĩ Quan Kĩ Thuật Quân Sự - Hệ Dân sự - Đại Học Trần Đại Nghĩa');
 go
 
+insert into [Major](Code, [Name]) values
+('7220201', N'Ngôn Ngữ Anh'),
+('7220204', N'Ngôn Ngữ Trung Quốc'),
+('7220209', N'Ngôn Ngữ Nhật'),
+('7220210', N'Ngôn Ngữ Hàn'),
+('7340101', N'Quản Trị Kinh Doanh'),
+('7320104', N'Truyền Thông Đa Phương Tiện'),
+('7320106', N'Công Nghệ Truyền Thông'),
+('7340115', N'Marketing'),
+('7340120', N'Kinh Doanh Quốc Tế'),
+('7340201', N'Tài Chính Ngân Hàng'),
+('7340301', N'Kế Toán'),
+('7340302', N'Kiểm Toán'),
+('7420201', N'Công Nghệ Sinh Học'),
+('7480101', N'Khoa Học Máy Tính'),
+('7480103', N'Kỹ Thuật Phần Mềm'),
+('7480104', N'Hệ Thống Thông Tin'),
+('7480201', N'Công Nghệ Thông Tin'),
+('7480202', N'An Toàn Thông Tin'),
+('7510401', N'Công Nghệ Kỹ Thuật Hóa Học'),
+('7510605', N'Logistics Và Quản Lý Chuỗi Cung Ứng'),
+('7520201', N'Kỹ Thuật Điện'),
+('7520130', N'Kỹ Thuật Ô Tô'),
+('7520216', N'Kỹ Thuật Điều Khiển Và Tự Động Hóa'),
+('7520309', N'Kỹ Thuật Vật Liệu'),
+('7540101', N'Công Nghệ Thực Phẩm'),
+('7580201', N'Kỹ Thuật Xây Dựng'),
+('7620301', N'Nuôi Trồng Thủy Sản'),
+('7810103', N'Quản Trị Dịch Vụ Và Lữ Hành');
+go
+
 insert into [Hobby] ([Name], [Description]) values
 (N'Đá bóng', N'Là hoạt động thể chất chạy nhiều và cần có kỹ thuật điều khiển bóng'),
 (N'Đọc sách', N'Là hoạt động giải trí giúp mở rộng kiến thức và phát triển tư duy'),
@@ -363,3 +390,54 @@ insert into [Hobby] ([Name], [Description]) values
 (N'Chơi bóng chuyền', N'Là môn thể thao đồng đội với mục tiêu đưa bóng qua lưới'),
 (N'Chơi bóng bàn', N'Là môn thể thao cần sự nhanh nhẹn và phản xạ tốt'),
 (N'Chơi đàn guitar', N'Là quá trình học và biểu diễn âm nhạc qua cây đàn guitar');
+go
+
+insert into [Account](Email,[Password],[Role],[Status]) values
+('admin@DestinyMatch.com', '12345', 'admin','working'),
+('moderator@DestinyMatch.com', '12345', 'moderator', 'working'),
+('hoangphse172789@fpt.edu.vn', '14112003', 'moderator', 'working'),
+('newbie@university.edu.vn', '12345', 'member', default),
+('an.nguyen@example.com', '12345', 'member', 'experienced'),
+('ha.tran@example.com', '12345', 'member', 'experienced'),
+('minh.le@example.com', '12345', 'member', 'experienced'),
+('thuy.pham@example.com', '12345', 'member', 'experienced'),
+('tuan.ngo@example.com', '12345', 'member', 'experienced'),
+('lan.nguyen@example.com', '12345', 'member', 'experienced'),
+('danh.trinh@example.com', '12345', 'member', 'experienced'),
+('diem.le@example.com', '12345', 'member', 'experienced'),
+('bao.hoang@example.com', '12345', 'member', 'experienced'),
+('van.truong@example.com', '12345', 'member', 'experienced'),
+('duc.do@example.com', '12345', 'member', 'experienced'),
+('my.nguyen@example.com', '12345', 'member', 'experienced'),
+('tuan.le@example.com', '12345', 'member', 'experienced'),
+('phuong.tran@example.com', '12345', 'member', 'experienced'),
+('hai.ngo@example.com', '12345', 'member', 'experienced'),
+('thanh.nguyen@example.com', '12345', 'member', 'experienced'),
+('bao.tran@example.com', '12345', 'member', 'experienced'),
+('hong.le@example.com', '12345', 'member', 'experienced'),
+('minh.do@example.com', '12345', 'member', 'experienced'),
+('nga.nguyen@example.com', '12345', 'member', 'experienced');
+go
+
+insert into [Member](Fullname, Gender, AccountId, UniversityId, MajorId) values
+(N'Nguyễn Văn An', 1, (SELECT Id FROM [Account] WHERE Email = 'an.nguyen@example.com'), (SELECT Id FROM [University] WHERE Code = 'FPT'), (SELECT Id FROM [Major] WHERE Code = '7480103')),
+(N'Trần Thu Hà', 0, (SELECT Id FROM [Account] WHERE Email = 'ha.tran@example.com'), (SELECT Id FROM [University] WHERE Code = 'NTT'), (SELECT Id FROM [Major] WHERE Code = '7340115')),
+(N'Lê Hoàng Minh', 1,(SELECT Id FROM [Account] WHERE Email = 'minh.le@example.com'), (SELECT Id FROM [University] WHERE Code = 'QSX'), (SELECT Id FROM [Major] WHERE Code = '7480103')),
+(N'Phạm Thu Thủy', 0, (SELECT Id FROM [Account] WHERE Email = 'thuy.pham@example.com'), (SELECT Id FROM [University] WHERE Code = 'QSX'), (SELECT Id FROM [Major] WHERE Code = '7340115')),
+(N'Ngô Đức Tuấn', 1,(SELECT Id FROM [Account] WHERE Email = 'tuan.ngo@example.com'), (SELECT Id FROM [University] WHERE Code = 'FPT'), (SELECT Id FROM [Major] WHERE Code = '7480101')),
+(N'Nguyễn Thị Lan', 0, (SELECT Id FROM [Account] WHERE Email = 'lan.nguyen@example.com'), (SELECT Id FROM [University] WHERE Code = 'QST'), (SELECT Id FROM [Major] WHERE Code = '7340101')),
+(N'Trịnh Công Danh', 1,(SELECT Id FROM [Account] WHERE Email = 'danh.trinh@example.com'), (SELECT Id FROM [University] WHERE Code = 'QST'), (SELECT Id FROM [Major] WHERE Code = '7480101')),
+(N'Lê Thị Diễm', 0, (SELECT Id FROM [Account] WHERE Email = 'diem.le@example.com'), (SELECT Id FROM [University] WHERE Code = 'HCN'), (SELECT Id FROM [Major] WHERE Code = '7340101')),
+(N'Hoàng Quốc Bảo', 1,(SELECT Id FROM [Account] WHERE Email = 'bao.hoang@example.com'), (SELECT Id FROM [University] WHERE Code = 'FPT'), (SELECT Id FROM [Major] WHERE Code = '7520130')),
+(N'Trương Thị Vân', 0, (SELECT Id FROM [Account] WHERE Email = 'van.truong@example.com'), (SELECT Id FROM [University] WHERE Code = 'HCN'), (SELECT Id FROM [Major] WHERE Code = '7340201')),
+(N'Đỗ Minh Đức', 1,(SELECT Id FROM [Account] WHERE Email = 'duc.do@example.com'), (SELECT Id FROM [University] WHERE Code = 'NTT'), (SELECT Id FROM [Major] WHERE Code = '7520130')),
+(N'Nguyễn Thị Mỹ', 0, (SELECT Id FROM [Account] WHERE Email = 'my.nguyen@example.com'), (SELECT Id FROM [University] WHERE Code = 'DVL'), (SELECT Id FROM [Major] WHERE Code = '7340201')),
+(N'Lê Anh Tuấn', 1,(SELECT Id FROM [Account] WHERE Email = 'tuan.le@example.com'), (SELECT Id FROM [University] WHERE Code = 'DVL'), (SELECT Id FROM [Major] WHERE Code = '7220209')),
+(N'Trần Thị Phương', 0, (SELECT Id FROM [Account] WHERE Email = 'phuong.tran@example.com'), (SELECT Id FROM [University] WHERE Code = 'VHS'), (SELECT Id FROM [Major] WHERE Code = '7220209')),
+(N'Ngô Văn Hải', 1,(SELECT Id FROM [Account] WHERE Email = 'hai.ngo@example.com'), (SELECT Id FROM [University] WHERE Code = 'HIU'), (SELECT Id FROM [Major] WHERE Code = '7220209')),
+(N'Nguyễn Thị Thanh', 0, (SELECT Id FROM [Account] WHERE Email = 'thanh.nguyen@example.com'), (SELECT Id FROM [University] WHERE Code = 'VHS'), (SELECT Id FROM [Major] WHERE Code = '7510605')),
+(N'Trần Quốc Bảo', 1,(SELECT Id FROM [Account] WHERE Email = 'bao.tran@example.com'), (SELECT Id FROM [University] WHERE Code = 'HIU'), (SELECT Id FROM [Major] WHERE Code = '7510605')),
+(N'Lê Thị Hồng', 0, (SELECT Id FROM [Account] WHERE Email = 'hong.le@example.com'), (SELECT Id FROM [University] WHERE Code = 'HIU'), (SELECT Id FROM [Major] WHERE Code = '7520216')),
+(N'Đỗ Văn Minh', 1,(SELECT Id FROM [Account] WHERE Email = 'minh.do@example.com'), (SELECT Id FROM [University] WHERE Code = 'UEF'), (SELECT Id FROM [Major] WHERE Code = '7520216')),
+(N'Nguyễn Thị Nga', 0, (SELECT Id FROM [Account] WHERE Email = 'nga.nguyen@example.com'), (SELECT Id FROM [University] WHERE Code = 'UEF'), (SELECT Id FROM [Major] WHERE Code = '7340101'));
+go

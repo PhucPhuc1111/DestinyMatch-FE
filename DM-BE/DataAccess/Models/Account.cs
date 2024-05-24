@@ -11,9 +11,9 @@ public partial class Account
 
     public string? Password { get; set; }
 
-    public DateTime? TimeStamp { get; set; }
+    public DateTime? CreateAt { get; set; }
 
-    public int? Role { get; set; }
+    public string Role { get; set; } = null!;
 
     public string? Status { get; set; }
 

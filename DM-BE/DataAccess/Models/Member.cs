@@ -17,6 +17,8 @@ public partial class Member
 
     public string? Address { get; set; }
 
+    public int? Surplus { get; set; }
+
     public string? Status { get; set; }
 
     public Guid? AccountId { get; set; }
@@ -29,17 +31,23 @@ public partial class Member
 
     public virtual ICollection<Authentication> Authentications { get; set; } = new List<Authentication>();
 
+    public virtual ICollection<Conversation> ConversationFirstMembers { get; set; } = new List<Conversation>();
+
+    public virtual ICollection<Conversation> ConversationSecondMembers { get; set; } = new List<Conversation>();
+
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual Major? Major { get; set; }
 
-    public virtual ICollection<MatchActivity> MatchActivities { get; set; } = new List<MatchActivity>();
+    public virtual ICollection<MatchRequest> MatchRequestFroms { get; set; } = new List<MatchRequest>();
 
-    public virtual ICollection<Match> Matches { get; set; } = new List<Match>();
+    public virtual ICollection<MatchRequest> MatchRequestTos { get; set; } = new List<MatchRequest>();
 
     public virtual ICollection<MemberPackage> MemberPackages { get; set; } = new List<MemberPackage>();
 
-    public virtual ICollection<Message> Messages { get; set; } = new List<Message>();
+    public virtual ICollection<Message> MessageReceivers { get; set; } = new List<Message>();
+
+    public virtual ICollection<Message> MessageSenders { get; set; } = new List<Message>();
 
     public virtual ICollection<Picture> Pictures { get; set; } = new List<Picture>();
 
