@@ -1,106 +1,108 @@
-/*!
+import React, { Suspense, Fragment, lazy } from 'react';
+import { Routes, Navigate, Route } from 'react-router-dom';
 
-=========================================================
-* Vision UI Free Chakra - v1.0.0
-=========================================================
+import Loader from './components/Loader/Loader';
+import AdminLayout from './layouts/AdminLayout';
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-chakra
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-chakra/blob/master LICENSE.md)
+import { BASE_URL } from './config/constant';
+const renderRoutes = (routes = []) => (
+  <Suspense fallback={<Loader />}>
+    <Routes>
+      {routes.map((route, i) => {
+        const Guard = route.guard || Fragment;
+        const Layout = route.layout || Fragment;
+        const Element = route.element;
 
-* Design and Coded by Simmmple & Creative Tim
+        return (
+          <Route
+            key={i}
+            path={route.path}
+            exact={route.exact}
+            element={
+              <Guard>
+                <Layout>{route.routes ? renderRoutes(route.routes) : <Element props={true} />}</Layout>
+              </Guard>
+            }
+          />
+        );
+      })}
+    </Routes>
+  </Suspense>
+);
 
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
-// import
-import Dashboard from "views/Dashboard/Dashboard.js";
-import Tables from "views/Dashboard/Tables.js";
-import Billing from "views/Dashboard/Billing.js";
-import RTLPage from "views/RTL/RTLPage.js";
-import Profile from "views/Dashboard/Profile.js";
-import SignIn from "views/Pages/SignIn.js";
-import SignUp from "views/Pages/SignUp.js";
-
-import {
-  HomeIcon,
-  StatsIcon,
-  CreditIcon,
-  PersonIcon,
-  DocumentIcon,
-  RocketIcon,
-  SupportIcon,
-} from "components/Icons/Icons";
-
-var dashRoutes = [
+export const routes = [
   {
-    path: "/dashboard",
-    name: "Dashboard",
-    rtlName: "لوحة القيادة",
-    icon: <HomeIcon color='inherit' />,
-    component: Dashboard,
-    layout: "/admin",
+    exact: 'true',
+    path: '/auth/signin',
+    element: lazy(() => import('./views/auth/signin/SignIn1'))
   },
   {
-    path: "/tables",
-    name: "Tables",
-    rtlName: "لوحة القيادة",
-    icon: <StatsIcon color='inherit' />,
-    component: Tables,
-    layout: "/admin",
+    exact: 'true',
+    path: '/auth/signup-1',
+    element: lazy(() => import('./views/auth/signup/SignUp1'))
   },
   {
-    path: "/billing",
-    name: "Billing",
-    rtlName: "لوحة القيادة",
-    icon: <CreditIcon color='inherit' />,
-    component: Billing,
-    layout: "/admin",
+    exact: 'true',
+    path: '/auth/signin-1',
+    element: lazy(() => import('./views/auth/signin/SignIn1'))
   },
   {
-    path: "/rtl-support-page",
-    name: "RTL",
-    rtlName: "آرتيإل",
-    icon: <SupportIcon color='inherit' />,
-    component: RTLPage,
-    layout: "/rtl",
+    exact: 'true',
+    path: '/auth/reset-password-1',
+    element: lazy(() => import('./views/auth/reset-password/ResetPassword1'))
   },
   {
-    name: "ACCOUNT PAGES",
-    category: "account",
-    rtlName: "صفحات",
-    state: "pageCollapse",
-    views: [
+    path: '*',
+    layout: AdminLayout,
+    routes: [
       {
-        path: "/profile",
-        name: "Profile",
-        rtlName: "لوحة القيادة",
-        icon: <PersonIcon color='inherit' />,
-        secondaryNavbar: true,
-        component: Profile,
-        layout: "/admin",
+        exact: 'true',
+        path: '/app/dashboard/analytics',
+        element: lazy(() => import('./views/dashboard'))
       },
       {
-        path: "/signin",
-        name: "Sign In",
-        rtlName: "لوحة القيادة",
-        icon: <DocumentIcon color='inherit' />,
-        component: SignIn,
-        layout: "/auth",
+        exact: 'true',
+        path: '/basic/button',
+        element: lazy(() => import('./views/ui-elements/BasicButton'))
       },
       {
-        path: "/signup",
-        name: "Sign Up",
-        rtlName: "لوحة القيادة",
-        icon: <RocketIcon color='inherit' />,
-        secondaryNavbar: true,
-        component: SignUp,
-        layout: "/auth",
+        exact: 'true',
+        path: '/basic/badges',
+        element: lazy(() => import('./views/ui-elements/BasicBadges'))
       },
-    ],
-  },
+      {
+        exact: 'true',
+        path: '/basic/breadcrumb-pagination',
+        element: lazy(() => import('./views/ui-elements/BasicBreadcrumbPagination'))
+      },
+      {
+        exact: 'true',
+        path: '/basic/collapse',
+        element: lazy(() => import('./views/ui-elements/BasicCollapse'))
+      },
+
+      {
+        exact: 'true',
+        path: '/basic/typography',
+        element: lazy(() => import('./views/ui-elements/BasicTypography'))
+      },
+      {
+        exact: 'true',
+        path: '/basic/tooltip-popovers',
+        element: lazy(() => import('./views/ui-elements/BasicTooltipsPopovers'))
+      },
+      {
+        exact: 'true',
+        path: '/sample-page',
+        element: lazy(() => import('./views/extra/SamplePage'))
+      },
+      {
+        path: '*',
+        exact: 'true',
+        element: () => <Navigate to={BASE_URL} />
+      }
+    ]
+  }
 ];
-export default dashRoutes;
+
+export default renderRoutes;

@@ -1,269 +1,139 @@
-# [Vision UI Free Chakra](https://demos.creative-tim.com/vision-ui-dashboard-chakra) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https://www.creative-tim.com/product/vision-ui-dashboard-chakra&text=Check%20Vision%20UI%20Dashboard%20made%20by%20@simmmple_web%20and%20@CreativeTim%20#webdesign%20#dashboard%20#react)
+# Gradient Able React Free Admin Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Download%20Gradient%20Able%20-%20The%20Professional%20Bootstrap%20Designed%20React%20Admin%20Dashboard%20Template%20&url=https://codedthemes.com/demos/admin-templates/gradient-able/react/default&via=codedthemes&hashtags=reactjs,webdev,developers,javascript)
 
-![version](https://img.shields.io/badge/version-1.0.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/vision-ui-dashboard-chakra.svg?maxAge=2592000)](https://github.com/creativetimofficial/vision-ui-dashboard-chakra/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/vision-ui-dashboard-chakra.svg?maxAge=2592000)](https://github.com/creativetimofficial/vision-ui-dashboard-chakra/issues?q=is%3Aissue+is%3Aclosed)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)](https://github.com/codedthemes/gradient-able-free-admin-template/blob/main/react/LICENSE)
 
-![Product Gif](https://i.ibb.co/x8GDNYV/vision-ui-free-chakra.png)
+Gradient Able React Free Admin Template comes with variety of components like Button, Badges, Breadcrumb, & Authentication pages.
 
-Most trendiest, complex and innovative Free Chakra UI Dashboard Made by [Simmmple](https://simmmple.com?ref=readme-vudchakra) & [Creative Tim](https://creative-tim.com/?ref=readme-vudchakra). Check our latest Free Chakra UI Dashboard.
+The code structure is high flexible to use and modify.
 
-Start your Development with an Innovative Admin Template for Chakra UI and React. If you like the look & feel of the hottest design trend right now, Vision UI, you will fall in love with this dashboard! It features a huge number of components built to fit together and look amazing.
+Its design adapt any screen size easily even if retina screens.
 
-**Fully Coded Elements**
+It is modern concept dashboard design with eye catchy colors. Wish you happy to use our product in your project.
 
-Vision UI Dashboard Free Chakra UI is built with over 70+ frontend individual elements, like buttons, inputs, navbars, nav tabs, cards, or alerts, giving you the freedom of choosing and combining. All components can take variations in color, which you can easily modify using JSS files and classes. You will save a lot of time going from prototyping to full-functional code because all elements are implemented. This Premium Chakra UI Dashboard is coming with prebuilt design blocks, so the development process is seamless, switching from our pages to the real website is very easy to be done.
+:star: :star: :star: Support us by giving star (Top right of this page) if you like the theme :star: :star: :star:
 
-Check all components <a href="https://demos.creative-tim.com/docs-vision-ui-dashboard-chakra?ref=readme-vudchakra" target="_blank">here</a>.
+![Gradient Able React Free Admin Template Preview Image](https://org-public-assets.s3.us-west-2.amazonaws.com/Free-Version-Banners/GITHUB-FREE-REACT-REPO%20-%20Gradient%20Able.jpg)
 
-**Documentation built by Developers**
+The [Pro version](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/?utm_source=free_demo&utm_medium=codedthemes&utm_campaign=button_download_premium) of Gradient able react template includes features such as javascript, apps, authentication methods (i.e. JWT, Auth0, Firebase), advance components, form plugins, layouts, widgets, and more.
 
-Each element is well presented in a very complex documentation.
-You can read more about the <a href="https://demos.creative-tim.com/docs-vision-ui-dashboard-chakra?ref=readme-vudchakra" target="_blank">documentation here</a>.
+| [Gradient Able Free](https://codedthemes.com/item/gradient-able-reactjs-free-admin-template) | [Gradient Able](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/?utm_source=free_demo&utm_medium=codedthemes&utm_campaign=button_download_premium)            |
+| -------------------------------------------------------     | :------------------------------------------------------------------------------- |
+| **7** Demo pages                                            | **85+** Demo pages                                                               |
+| -                                                           | ✓ Multi-Dashboard                                                                 |
+| -                                                           | ✓ Dark/Light Mode 🌓                                                             |
+| -                                                           | ✓ Js version                                                             |
+| -                                                           | ✓ Multiple color options                                                         |
+| -                                                           | ✓ RTL                                                                            |
+| -                                                           | ✓ JWT, Firebase, Auth0, AWS authentication                                       |
+| ✓ MIT License                                               | ✓ [Pro License](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/?utm_source=free_demo&utm_medium=codedthemes&utm_campaign=button_download_premium)                |
 
-**Example Pages**
+## Why Gradient Able?
 
-If you want to get inspiration or just show something directly to your clients, you can jump-start your development with our pre-built example pages. Every page is spaced well, with attractive layouts and pleasing shapes. From specially designed dashboards for smart homes, virtual reality, and automotives to CRM admins, Vision UI Dashboard Free Chakra UI has everything you need to quickly set up an amazing project.
+Gradient Able offers everything needed to build an advanced dashboard application. In the initial release, we included following high-end features,
 
-View <a href="https://demos.creative-tim.com/vision-ui-dashboard-chakra?ref=readme-vudchakra" target="_blank">example pages here</a>.
+- Support React18.
+- Professional user interface.
+- Bootstrap React components.
+- Fully responsive, all modern browser supported.
+- Easy to use code structure
+- Flexible & high-Performance code
+- Simple documentation
 
-**HELPFUL LINKS**
+## Free Gradient Able React version
 
-- View <a href="https://github.com/creativetimofficial/vision-ui-dashboard-chakra" target="_blank">Github Repository</a>
+#### Preview
 
-- Check <a href="https://www.creative-tim.com/knowledge-center?ref=readme-vudchakra" target="_blank">FAQ Page</a>
+- [Demo](https://codedthemes.com/item/gradient-able-reactjs-free-admin-template)
 
-#### Special thanks
+#### Download
 
-During the development of this dashboard, we have used many existing resources from awesome developers. We want to thank them for providing their tools open source:
+- [Download from GitHub](https://github.com/codedthemes/gradient-able-free-admin-template)
 
-- [Chakra UI](https://chakra-ui.com/?ref=creative-tim) - Modern Open source framework
-- [ApexCharts.js](https://apexcharts.com?ref=creative-tim) - Modern & Interactive Open-source charts
-- [Quill Editor](https://www.npmjs.com/package/react-quill?ref=creative-tim) - ReactJS Text Editor provided by Quill
-- [React Table](https://react-table.tanstack.com/docs/overview?ref=creative-tim) - Collection of hooks for building powerful ReactJD tables
-- [ReactJS](https://reactjs.org?ref=creative-tim) - A popular JavaScript library for building user interfaces
+## Gradient Able Pro version
 
-Let us know your thoughts below. And good luck with development!
+#### Preview
 
-## Table of Contents
+- [Demo](https://codedthemes.com/demos/admin-templates/gradient-able/react/default)
 
-- [Vision UI Dashboard Free Chakra] (https://demos.creative-tim.com/vision-ui-dashboard-chakra/?ref=readme-vudchakra)
-- [Table of Contents](#table-of-contents)
-- [Versions](#versions)
-- [Demo](#demo)
-- [Quick start](#quick-start)
+#### Purchase
+
+- [Buy now](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/?utm_source=free_demo&utm_medium=codedthemes&utm_campaign=button_download_premium)
+
+## Table of contents
+
+- [Getting started](#getting-started)
 - [Documentation](#documentation)
-- [File Structure](#file-structure)
-- [Browser Support](#browser-support)
-- [Resources](#resources)
-- [Reporting Issues](#reporting-issues)
-- [Licensing](#licensing)
-- [Useful Links](#useful-links)
-- [Social Media](#social-media)
+- [Technology stack](#technology-stack)
+- [Author](#author)
+- [Issues?](#issues)
+- [License](#license)
+- [More Free React Templates](#more-free-react-material-admin-dashboard-templates)
+- [More Pro React Templates](#more-premium-react-material-admin-dashboard-templates)
+- [Follow us](#follow-us)
 
-## Versions
+## Getting Started
 
-[<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/react-logo.jpg?raw=true" width="60" height="60" />](https://www.creative-tim.com/product/vision-ui-dashboard-react?ref=readme-vudchakra)[<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/chakra-logo.jpg?raw=true" width="60" height="60" />](https://www.creative-tim.com/product/vision-ui-dashboard-chakra?ref=readme-vudchakra)
+1. Clone from Github
 
-| React | Chakra |
-| ]------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [![Vision UI Dashboard Free React] (https://i.ibb.co/RYKtQ4M/vision-ui-free-react-ct.png)](https://www.creative-tim.com/product/vision-ui-dashboard-react?ref=readme-vudchakra) | [![Vision UI Dashboard Free Chakra] (https://i.ibb.co/kg5mNxm/vision-ui-free-chakra-ct.png)](https://www.creative-tim.com/product/vision-ui-dashboard-chakra?ref=readme-vudchakra) |
+```
+git clone https://github.com/codedthemes/gradient-able-free-admin-template.git
+```
 
-## Demo
+2. Install packages
 
-[View all Pages](https://demos.creative-tim.com/vision-ui-dashboard-chakra?ref=readme-vudchakra).
+```
+yarn
+```
 
-# Quick start
+3. Run project
 
-Quick start options:
-
-- Buy from [Creative Tim](https://www.creative-tim.com/product/vision-ui-dashboard-chakra?ref=readme-vudchakra).
-
-## Terminal Commands
-
-1. Download and Install NodeJs LTS version from [NodeJs Official Page](https://nodejs.org/en/download/).
-2. Navigate to the root / directory and run yarn install/npm install to install our local dependencies.
+```
+yarn start
+```
 
 ## Documentation
 
-The documentation for the Vision UI Dashboard Free is hosted at our [website](https://demos.creative-tim.com/docs-vision-ui-dashboard-chakra?ref=readme-vudchakra).
+[Gradient Able documentation](https://codedthemes.gitbook.io/gradient-able-react/) helps you out in all aspects from Installation to deployment.
 
-## File Structure
+## Technology stack
 
-Within the download you'll find the following directories and files:
+- [Bootstrap V5](https://react-bootstrap.netlify.app/)
+- Built with React Hooks API.
+- Redux & React context API for state management.
+- Redux toolkit.
+- React Router for navigation routing.
+- Support for react-script.
+- Code splitting.
+- CSS-in-JS.
 
-```
-vision-dashboard-chakra-free/
-├── .gitattributes
-├── .gitigonore
-├── CHANGELOG.md
-├── commit.sh
-├── gulpfile.js
-├── ISSUE_TEMPLATE.md
-├── jsconfig.json
-├── package.json
-├── README.md
-├── public
-│   ├── favicon.png
-│   ├── index.html
-│   ├── apple-icon.png
-│   ├── robots.txt
-│   └── manifest.json
-└── src
-    ├── assets
-    │   ├── img
-    │   └── svg
-    ├── components
-    │   ├── Card
-    │   │   ├── Card.js
-    │   │   ├── CardBody.js
-    │   │   └── CardHeader.js
-    │   ├── Charts
-    │   │   ├── BarChart.js
-    │   │   └── LineChart.js
-    │   ├── Configurator
-    │   │   └── Configurator.js
-    │   ├── FixedPlugin
-    │   │   └── FixedPlugin.js
-    │   ├── Footer
-    │   │   └── Footer.js
-    │   ├── GradientBorder
-    │   │   └── GradientBorder.js
-    │   ├── Icons
-    │   │   ├── IconBox.js
-    │   │   └── Icons.js
-    │   ├── Layout
-    │   │   ├── MainPanel.js
-    │   │   ├── PanelContainer.js
-    │   │   └── PanelContent.js
-    │   ├── Menu
-    │   │   └── ItemContent.js
-    │   ├── Navbars
-    │   │   ├── Searchbar
-    │   │   │   └── SearchBar.js
-    │   │   ├── AdminNavbar.js
-    │   │   ├── AdminNavbarLinks.js
-    │   │   └── AuthNavbar.js
-    │   ├── Other
-    │   │   ├── BillingRow.js
-    │   │   ├── InvoicesRow.js
-    │   │   └── TransactionRow.js
-    │   ├── Separator
-    │   │   └── Separator.js
-    │   ├── Sidebar
-    │   │   ├── Sidebar.js
-    │   │   └── SidebarHelp.js
-    │   └── Tables
-    │       ├── BillingRow.js
-    │       ├── DashboardTableRow.js
-    │       ├── InvoicesRow.js
-    │       ├── TablesProjectRow.js
-    │       ├── TablesTableRow.js
-    │       ├── TimelineRow.js
-    │       └── TransactionRow.js
-    ├── layouts
-    │   ├── Admin.js
-    │   ├── Auth.js
-    │   └── RTL.js
-    ├── theme
-    │   ├── additions
-    │   │   ├── card
-    │   │   │   ├── Card.js
-    │   │   │   ├── CardBody.js
-    │   │   │   └── CardHeader.js
-    │   │   ├── layout
-    │   │   │   ├── MainPanel.js
-    │   │   │   ├── PanelContainer.js
-    │   │   │   └── PanelContent.js
-    │   ├── components
-    │   │   ├── badge.js
-    │   │   ├── button.js
-    │   │   ├── link.js
-    │   │   └── drawer.js
-    │   ├── foundations
-    │   │   └── breakpoints.js
-    │   ├── bgAdmin.js
-    │   ├── bgAuth.js
-    │   ├── styles.js
-    │   ├── themeAdmin.js
-    │   └── themeAuth.js
-    ├── variables
-    │   ├── charts.js
-    │   └── general.js
-    ├── views
-    │   ├── Dashboard
-    │   │   ├── Billing.js
-    │   │   ├── Dashboard.js
-    │   │   ├── Profile.js
-    │   │   └── Tables.js
-    │   ├── Pages
-    │       ├── SignIn.js
-    │       └── SignUp.js
-    │   └── RTL
-    │       └── RTLPage.js
-    ├── index.js
-    └── routes.js
-```
+## Author
 
-## Browser Support
+Gradient Able is managed by team [CodedThemes](https://codedthemes.com).
 
-At present, we officially aim to support the last two versions of the following browsers:
+## Issues
 
-<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/chrome-logo.png?raw=true" width="64" height="64"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/firefox-logo.png" width="64" height="64"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/edge-logo.png" width="64" height="64"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/safari-logo.png" width="64" height="64"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/opera-logo.png" width="64" height="64">
+Please generate a [GitHub issue](https://github.com/codedthemes/gradient-able-free-admin-template/issues) if you found a bug in any version. We are try our best to resolve the issue.
 
-## Resources
+## License
 
-- [Live Preview](https://demos.creative-tim.com/vision-ui-dashboard-chakra?ref=readme-vudchakra)
-- [Buy Page](https://www.creative-tim.com/product/vision-ui-dashboard-chakra?ref=readme-vudchakra)
-- License Agreement: <https://www.creative-tim.com/license?ref=readme-vudchakra>
-- Documentation is [here](https://demos.creative-tim.com/docs-vision-ui-dashboard-chakra?ref=readme-vudchakra)
-- [Support](https://www.creative-tim.com/contact-us?ref=readme-vudchakra)
-- Issues: [Github Issues Page](https://github.com/creativetimofficial/vision-ui-dashboard-chakra/issues)
+- Licensed under [MIT](https://github.com/codedthemes/gradient-able-free-admin-template/blob/main/react/LICENSE)
 
-## Reporting Issues
+## More Free React Material Admin Dashboard Templates
 
-We use GitHub Issues as the official bug tracker for the Vision UI Dashboard. Here are some advices for our users that want to report an issue:
+- [Free Materially](https://codedthemes.com/item/materially-free-reactjs-admin-template/)
+- [Free Berry](https://mui.com/store/items/berry-react-material-admin-free/)
 
-1. Make sure that you are using the latest version of the Vision UI Dashboard. Check the CHANGELOG from your dashboard on our [CHANGE LOG File](https://github.com/creativetimofficial/vision-ui-dashboard-chakra/blob/main/CHANGELOG.md?ref=readme-vudchakra).
-2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
+## More premium React Material Admin Dashboard Templates
 
-## Technical Support or Questions
+- [Materially](https://codedthemes.com/item/materially-reactjs-admin-dashboard/?utm_source=free_demo&utm_medium=codedthemes&utm_campaign=button_download_premium)
+- [Berry](https://mui.com/store/items/berry-react-material-admin/)
 
-If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us?ref=readme-vudchakra) instead of opening an issue.
+## Follow us
 
-## Licensing
-
-- Copyright 2022 [Creative Tim](https://www.creative-tim.com?ref=readme-vudchakra)
-
-- Creative Tim [License](https://www.creative-tim.com/license?ref=readme-vudchakra)
-
-## Useful Links
-
-- [More products](https://www.creative-tim.com/templates?ref=readme-vudchakra) from Creative Tim
-
-- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
-
-- [Freebies](https://www.creative-tim.com/bootstrap-themes/free?ref=readme-vudchakra) from Creative Tim
-
-- [Affiliate Program](https://www.creative-tim.com/affiliates/new?ref=readme-vudchakra) (earn money)
-
-- [More products](https://simmmple.com/?ref=readme-vudchakra) from Simmmple
-
-### Social Media - Creative Tim
-
-Twitter: <https://twitter.com/CreativeTim>
-
-Facebook: <https://www.facebook.com/CreativeTim>
-
-Dribbble: <https://dribbble.com/creativetim>
-
-Instagram: <https://www.instagram.com/CreativeTimOfficial>
-
-### Social Media - Simmmple
-
-Twitter: <https://twitter.com/simmmple_web>
-
-Facebook: <https://www.facebook.com/simmmple.web>
-
-Dribbble: <https://dribbble.com/simmmple>
-
-Instagram: <https://www.instagram.com/simmmple.web>
+- Website [https://codedthemes.com/demos/admin-templates/gradient-able/react/default](https://codedthemes.com/demos/admin-templates/gradient-able/react/default)
+- Blog [https://blog.codedthemes.com/](https://blog.codedthemes.com/)
+- CodedThemes [https://codedthemes.com](https://codedthemes.com)
+- Dribbble [https://dribbble.com/codedthemes](https://dribbble.com/codedthemes)
+- Facebook [https://www.facebook.com/codedthemes](https://www.facebook.com/codedthemes)
+- Twitter [https://twitter.com/codedthemes](https://twitter.com/codedthemes)
