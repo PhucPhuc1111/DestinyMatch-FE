@@ -16,115 +16,68 @@ const menuItems = {
       ]
     },
     {
-      id: 'utilities',
-      title: 'Utilities',
+      id: 'registration',
+      title: 'Registration Process',
       type: 'group',
-      icon: 'icon-ui',
+      icon: 'feather icon-edit',
       children: [
         {
           id: 'component',
           title: 'Component',
           type: 'collapse',
-          icon: 'feather icon-box',
+          icon: 'feather icon-layers',
           children: [
             {
-              id: 'button',
-              title: 'Button',
+              id: 'university',
+              title: 'University',
               type: 'item',
-              url: '/basic/button'
+              icon: 'feather icon-book',
+              url: '/registation/university'
             },
             {
-              id: 'badges',
-              title: 'Badges',
+              id: 'major',
+              title: 'Major',
               type: 'item',
-              url: '/basic/badges'
+              icon: 'feather icon-briefcase',
+              url: '/registation/major'
             },
             {
-              id: 'breadcrumb-pagination',
-              title: 'Breadcrumb & Pagination',
+              id: 'hobbies',
+              title: 'Hobby',
               type: 'item',
-              url: '/basic/breadcrumb-pagination'
-            },
-            {
-              id: 'collapse',
-              title: 'Collapse',
-              type: 'item',
-              url: '/basic/collapse'
-            },
-            {
-              id: 'typography',
-              title: 'Typography',
-              type: 'item',
-              url: '/basic/typography'
-            },
-            {
-              id: 'tooltip-popovers',
-              title: 'Tooltip & Popovers',
-              type: 'item',
-              url: '/basic/tooltip-popovers'
+              icon: 'feather icon-heart',
+              url: '/registation/hobby'
             }
           ]
         }
       ]
     },
     {
-      id: 'auth',
-      title: 'Authentication',
+      id: 'manage',
+      title: 'Management',
       type: 'group',
-      icon: 'icon-pages',
+      icon: 'feather icon-settings',
       children: [
         {
-          id: 'sign in',
-          title: 'Login',
+          id: 'member',
+          title: 'Member',
           type: 'item',
-          icon: 'feather icon-lock',
-          url: '/auth/signin-1',
-          target: true,
-          breadcrumbs: false
+          icon: 'feather icon-user',
+          url: '/management/member'
         },
         {
-          id: 'sign Up',
-          title: 'Register',
+          id: 'package',
+          title: 'Package',
           type: 'item',
-          icon: 'feather icon-log-in',
-          url: '/auth/signup-1',
-          target: true,
-          breadcrumbs: false
+          icon: 'feather icon-package',
+          url: '/management/package'
         },
         {
-          id: 'reset-pass',
-          title: 'Reset Password',
+          id: 'feedback',
+          title: 'Feedback',
           type: 'item',
-          icon: 'feather icon-unlock',
-          url: '/auth/reset-password-1',
-          target: true,
-          breadcrumbs: false
-        }
-      ]
-    },
-    {
-      id: 'support',
-      title: 'Support',
-      type: 'group',
-      icon: 'icon-support',
-      children: [
-        {
-          id: 'sample-page',
-          title: 'Sample Page',
-          type: 'item',
-          url: '/sample-page',
-          classes: 'nav-item',
-          icon: 'feather icon-sidebar'
-        },
-        {
-          id: 'documentation',
-          title: 'Documentation',
-          type: 'item',
-          icon: 'feather icon-help-circle',
-          classes: 'nav-item',
-          url: 'https://codedthemes.gitbook.io/gradient-able-react/',
-          target: true,
-          external: true
+          icon: 'feather icon-message-circle',
+          url: '/management/feedback'
         }
       ]
     }

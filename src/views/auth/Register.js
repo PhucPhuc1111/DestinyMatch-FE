@@ -2,10 +2,10 @@ import React from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 
-import logoDark from '../../../assets/images/logo-dark.png';
-import Breadcrumb from '../../../layouts/AdminLayout/Breadcrumb';
+import logoDark from '../../assets/images/logo-dark.png';
+import Breadcrumb from '../../layouts/AdminLayout/Breadcrumb';
 
-const SignUp1 = () => {
+const Register = () => {
   return (
     <React.Fragment>
       <Breadcrumb />
@@ -35,7 +35,7 @@ const SignUp1 = () => {
                   <button className="btn btn-primary btn-block mb-4">Sign up</button>
                   <p className="mb-2">
                     Already have an account?{' '}
-                    <NavLink to="/auth/signin-1" className="f-w-400">
+                    <NavLink to="/login" className="f-w-400">
                       Signin
                     </NavLink>
                   </p>
@@ -49,4 +49,4 @@ const SignUp1 = () => {
   );
 };
 
-export default SignUp1;
+export default Register;
