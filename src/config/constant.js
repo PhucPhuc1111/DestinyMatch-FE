@@ -1,5 +1,5 @@
-export const BASENAME = '/demos/admin-templates/gradient-able/react/free';
-export const BASE_URL = '/app/dashboard';
+export const BASENAME = '';
+export const BASE_URL = '/home';
 export const BASE_TITLE = 'DestinyMatch - ';
 
 export const CONFIG = {
