@@ -32,7 +32,7 @@ const HobbyTable = () => {
 
   useEffect(() => {
     fetchData();
-  }, [page, rowsPerPage, search, totalHobbies]);
+  }, [page, rowsPerPage, search, hobbies, totalHobbies]);
 
   const fetchData = async () => {
     try {
@@ -108,7 +108,7 @@ const HobbyTable = () => {
           placeholder="Search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ borderRadius: '5px', width: '300px' }}
+          style={{ borderRadius: '5px', width: '300px', padding: '10px' }}
         />
         <Button onClick={handleCreate} variant="contained" color="primary">
           Add Hobby
