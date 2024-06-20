@@ -3,8 +3,12 @@
   "version": "3.0.0",
   "private": false,
   "author": "codedThemes",
-  "homepage": "https://codedthemes.com/demos/admin-templates/gradient-able/react/free",
+  "homepage": "https://codedthemes.com/destiny-match",
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.20",
+    "@mui/material": "^5.15.20",
     "@reduxjs/toolkit": "^1.8.5",
     "@tanem/react-nprogress": "^5.0.14",
     "@vercel/speed-insights": "^1.0.12",
