@@ -1,5 +1,5 @@
-export const BASENAME = '/destiny-match';
-export const BASE_URL = '/dashboard';
+export const BASENAME = '';
+export const BASE_URL = '/home';
 export const BASE_TITLE = 'DestinyMatch - ';
 
 export const CONFIG = {

@@ -1,9 +1,9 @@
 {
-  "name": "gradient-able-free-react-admin-template",
+  "name": "destinymatch",
   "version": "3.0.0",
   "private": false,
-  "author": "codedThemes",
-  "homepage": "https://codedthemes.com/destiny-match",
+  "author": "destinymatch",
+  "homepage": "http://localhost:3000/home",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
