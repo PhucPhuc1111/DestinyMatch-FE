@@ -31,18 +31,17 @@ const Major = () => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchMajors(search, page, rowsPerPage);
+        setMajors(data.majors);
+        settotalMajors(data.count);
+      } catch (error) {
+        console.error('Error fetching majors:', error);
+      }
+    };
     fetchData();
   }, [page, rowsPerPage, search, majors, totalMajors]);
-
-  const fetchData = async () => {
-    try {
-      const data = await fetchMajors(search, page, rowsPerPage);
-      setMajors(data.majors);
-      settotalMajors(data.count);
-    } catch (error) {
-      console.error('Error fetching majors:', error);
-    }
-  };
 
   const handleDelete = async (id) => {
     try {

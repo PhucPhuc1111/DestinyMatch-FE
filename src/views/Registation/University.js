@@ -31,18 +31,17 @@ const University = () => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchUniversities(search, page, rowsPerPage);
+        setUniversities(data.universities);
+        settotalUniversities(data.count);
+      } catch (error) {
+        console.error('Error fetching universities:', error);
+      }
+    };
     fetchData();
   }, [page, rowsPerPage, search, universities, totalUniversities]);
-
-  const fetchData = async () => {
-    try {
-      const data = await fetchUniversities(search, page, rowsPerPage);
-      setUniversities(data.universities);
-      settotalUniversities(data.count);
-    } catch (error) {
-      console.error('Error fetching universities:', error);
-    }
-  };
 
   const handleDelete = async (id) => {
     try {
