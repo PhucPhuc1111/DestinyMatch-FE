@@ -31,18 +31,17 @@ const HobbyTable = () => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchHobbies(search, page, rowsPerPage);
+        setHobbies(data.hobbies);
+        setTotalHobbies(data.count);
+      } catch (error) {
+        console.error('Error fetching hobbies:', error);
+      }
+    };
     fetchData();
-  }, [page, rowsPerPage, search, totalHobbies]);
-
-  const fetchData = async () => {
-    try {
-      const data = await fetchHobbies(search, page, rowsPerPage);
-      setHobbies(data.hobbies);
-      setTotalHobbies(data.count);
-    } catch (error) {
-      console.error('Error fetching hobbies:', error);
-    }
-  };
+  }, [page, rowsPerPage, search, hobbies, totalHobbies]);
 
   const handleDelete = async (id) => {
     try {
@@ -108,7 +107,7 @@ const HobbyTable = () => {
           placeholder="Search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ borderRadius: '5px', width: '300px' }}
+          style={{ borderRadius: '5px', width: '300px', padding: '10px' }}
         />
         <Button onClick={handleCreate} variant="contained" color="primary">
           Add Hobby
@@ -158,7 +157,11 @@ const HobbyTable = () => {
         </Table>
       </TableContainer>
       <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '10px', marginTop: '20px' }}>
-        <label>Rows Per Page: </label>
+        {rowsPerPage >= 1 && rowsPerPage <= 25 ? (
+          <label>Rows Per Page:</label>
+        ) : (
+          <label style={{ color: 'red' }}>Value must be between 1 - 25</label>
+        )}
         <input
           value={rowsPerPage}
           onChange={(e) => setRowPerPage(e.target.value)}
@@ -177,7 +180,7 @@ const HobbyTable = () => {
           justifyContent: 'center',
           '& .MuiPaginationItem-root.Mui-selected': {
             backgroundColor: 'rgb(252, 112, 156)',
-            color: 'white' // Đổi màu chữ sang trắng nếu cần thiết
+            color: 'white'
           }
         }}
       />

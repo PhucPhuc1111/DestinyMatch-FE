@@ -44,7 +44,7 @@ export const routes = [
     layout: AdminLayout,
     routes: [
       {
-        path: '/app/dashboard',
+        path: '/home',
         element: lazy(() => import('./views/dashboard'))
       },
       {
