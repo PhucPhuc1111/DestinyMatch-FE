@@ -20,7 +20,7 @@ import PackageDialog from './PackageDIalog';
 const Package = () => {
   const [packages, setPackages] = useState([]);
   const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('name');
+  const [orderBy, setOrderBy] = useState('code');
   const [dialogOpen, setDialogOpen] = useState(false);
   const [currentPackage, setCurrentPackage] = useState(null);
   const [page, setPage] = useState(1);
@@ -35,8 +35,8 @@ const Package = () => {
       setTotalpackages(data.count);
     } catch (error) {
       console.error('Error fetching package:', error);
-    } 
-  }, [page, rowsPerPage, search,totalpackages]);
+    }
+  }, [page, rowsPerPage, search]);
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -47,7 +47,7 @@ const Package = () => {
   }, [fetchData, search]);
 
   const handleDelete = async (id) => {
-    console.log("delete with id: ", id);
+    console.log('delete with id: ', id);
     try {
       const response = await deletePackage(id);
       if (response) {
@@ -96,14 +96,16 @@ const Package = () => {
     setPage(value);
   };
 
-  const sortedpackages = packages && Array.isArray(packages) ? packages.slice().sort((a, b) => {
-    if (order === 'asc') {
-      return a[orderBy].localeCompare(b[orderBy]);
-    } else {
-      return b[orderBy].localeCompare(a[orderBy]);
-    }
-  }) : [];
-
+  const sortedpackages =
+    packages && Array.isArray(packages)
+      ? packages.slice().sort((a, b) => {
+          if (order === 'asc') {
+            return a[orderBy].localeCompare(b[orderBy]);
+          } else {
+            return b[orderBy].localeCompare(a[orderBy]);
+          }
+        })
+      : [];
 
   return (
     <>
@@ -113,7 +115,7 @@ const Package = () => {
           placeholder="Search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ borderRadius: '5px', width: '300px' }}
+          style={{ borderRadius: '5px', width: '300px', padding: '10px' }}
         />
         <Button onClick={handleCreate} variant="contained" color="primary">
           Add Package

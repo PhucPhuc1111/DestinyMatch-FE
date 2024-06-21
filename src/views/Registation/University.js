@@ -41,7 +41,7 @@ const University = () => {
       }
     };
     fetchData();
-  }, [page, rowsPerPage, search, universities, totalUniversities]);
+  }, [page, rowsPerPage, search, totalUniversities]);
 
   const handleDelete = async (id) => {
     try {
