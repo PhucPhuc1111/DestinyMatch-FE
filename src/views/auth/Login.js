@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Button, Alert } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 
@@ -17,15 +17,12 @@ const Login = () => {
             <Card.Body>
               <img src={logoDark} alt="" className="img-fluid mb-4" />
               <form>
-              <div className="input-group mb-3">
-                <input
-                type="email"
-                className="form-control"
-                placeholder="Email address" />
-              </div>
-              <div className="input-group mb-4">
-                <input type="password" className="form-control" placeholder="Password" />
-              </div>
+                <div className="input-group mb-3">
+                  <input type="email" className="form-control" placeholder="Email address" />
+                </div>
+                <div className="input-group mb-4">
+                  <input type="password" className="form-control" placeholder="Password" />
+                </div>
               </form>
               <p className="mb-0 text-muted">
                 Don’t have an account?{' '}
