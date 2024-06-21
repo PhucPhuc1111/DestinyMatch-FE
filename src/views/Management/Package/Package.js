@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Table,
   TableBody,
@@ -28,30 +28,34 @@ const Package = () => {
   const [totalpackages, setTotalpackages] = useState(0);
   const [search, setSearch] = useState('');
 
-  useEffect(() => {
-    fetchData();
-  }, [page, rowsPerPage, search, totalpackages]);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const data = await fetchPackages(search, page, rowsPerPage);
       setPackages(data.data);
       setTotalpackages(data.count);
     } catch (error) {
       console.error('Error fetching package:', error);
-    }
-  };
+    } 
+  }, [page, rowsPerPage, search,totalpackages]);
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      fetchData();
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [fetchData, search]);
 
   const handleDelete = async (id) => {
     console.log("delete with id: ", id);
     try {
-      const success = await deletePackage(id);
-      if (success) {
-        setPackages(packages.filter((hobby) => hobby.id !== id));
+      const response = await deletePackage(id);
+      if (response) {
+        setPackages(packages.filter((p) => p.id !== id));
         setTotalpackages(totalpackages - 1);
       }
     } catch (error) {
-      console.error('Error deleting hobby:', error);
+      console.error('Error deleting package:', error);
     }
   };
 
@@ -71,19 +75,20 @@ const Package = () => {
     setOrderBy(property);
   };
 
-  const handleSave = async (hobby) => {
+  const handleSave = async (packageData) => {
     try {
-      if (hobby.id) {
-        await updatePackage(hobby);
-        setPackages(packages.map((h) => (h.id === hobby.id ? hobby : h)));
+      let savedPackage;
+      if (packageData.id) {
+        savedPackage = await updatePackage(packageData);
+        setPackages(packages.map((p) => (p.id === packageData.id ? savedPackage : p)));
       } else {
-        const createdHobby = await createPackage(hobby);
-        setPackages([...packages, createdHobby]);
+        savedPackage = await createPackage(packageData);
+        setPackages([...packages, savedPackage]);
         setTotalpackages(totalpackages + 1);
       }
       setDialogOpen(false);
     } catch (error) {
-      console.error('Error saving hobby:', error);
+      console.error('Error saving package:', error);
     }
   };
 
@@ -93,11 +98,11 @@ const Package = () => {
 
   const sortedpackages = packages && Array.isArray(packages) ? packages.slice().sort((a, b) => {
     if (order === 'asc') {
-        return a[orderBy].localeCompare(b[orderBy]);
+      return a[orderBy].localeCompare(b[orderBy]);
     } else {
-        return b[orderBy].localeCompare(a[orderBy]);
+      return b[orderBy].localeCompare(a[orderBy]);
     }
-}) : [];
+  }) : [];
 
 
   return (
@@ -111,14 +116,14 @@ const Package = () => {
           style={{ borderRadius: '5px', width: '300px' }}
         />
         <Button onClick={handleCreate} variant="contained" color="primary">
-          Add Hobby
+          Add Package
         </Button>
       </div>
       <TableContainer component={Paper} sx={{ borderRadius: '5px 5px 0 0', marginTop: '10px', minHeight: '300px' }}>
         <Table>
           <TableHead>
             <TableRow sx={{ background: '#ccc', height: '25px' }}>
-            <TableCell sx={{ fontSize: '19px', fontWeight: 700, padding: '8px', letterSpacing: '1px', color: '#fff' }}>
+              <TableCell sx={{ fontSize: '19px', fontWeight: 700, padding: '8px', letterSpacing: '1px', color: '#fff' }}>
                 <TableSortLabel
                   active={orderBy === 'code'}
                   direction={orderBy === 'code' ? order : 'asc'}
@@ -161,17 +166,17 @@ const Package = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {sortedpackages.map((hobby) => (
-              <TableRow key={hobby.id} sx={{ background: 'rgb(246 ,247,251)' }}>
-                <TableCell>{hobby.code}</TableCell>
-                <TableCell>{hobby.name}</TableCell>
-                <TableCell>{hobby.description}</TableCell>
-                <TableCell>{hobby.price}</TableCell>
+            {sortedpackages.map((packagedata) => (
+              <TableRow key={packagedata.id} sx={{ background: 'rgb(246 ,247,251)' }}>
+                <TableCell>{packagedata.code}</TableCell>
+                <TableCell>{packagedata.name}</TableCell>
+                <TableCell>{packagedata.description}</TableCell>
+                <TableCell>{packagedata.price}</TableCell>
                 <TableCell>
-                  <IconButton onClick={() => handleEdit(hobby)}>
+                  <IconButton onClick={() => handleEdit(packagedata)}>
                     <EditIcon />
                   </IconButton>
-                  <IconButton onClick={() => handleDelete(hobby.id)}>
+                  <IconButton onClick={() => handleDelete(packagedata.id)}>
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>

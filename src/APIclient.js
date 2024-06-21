@@ -257,7 +257,7 @@ export async function deletePackage(id) {
       }
     });
 
-    if (response.status === 204) {
+    if (response.status === 200) {
       return true;
     } else {
       throw new Error('Failed to delete package');
