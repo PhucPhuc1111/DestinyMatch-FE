@@ -79,3 +79,79 @@ export async function createHobby(hobby) {
 }
 
 /* =============== End Hobby ===============*/
+
+/* =============== Package ===============*/
+export async function fetchPackages(search, page, pageSize) {
+  try {
+    const response = await fetch(`${BASE_URL}/package?pageIndex=${page}&PageSize=${pageSize}&searchString=${search}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching packages:', error);
+    throw error;
+  }
+}
+
+export async function deletePackage(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/package/${id}`, {
+      method: 'DELETE',
+      headers: {
+        accept: '*/*'
+      }
+    });
+
+    if (response.status === 204) {
+      return true;
+    } else {
+      throw new Error('Failed to delete package');
+    }
+  } catch (error) {
+    console.error('Error deleting package:', error);
+    throw error;
+  }
+}
+
+export async function updatePackage(pkg) {
+  try {
+    const response = await fetch(`${BASE_URL}/package`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(pkg)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update package');
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Error updating package:', error);
+    throw error;
+  }
+}
+
+export async function createPackage(pkg) {
+  try {
+    const response = await fetch(`${BASE_URL}/package`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(pkg)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create package');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error creating package:', error);
+    throw error;
+  }
+}
