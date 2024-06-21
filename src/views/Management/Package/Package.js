@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Table,
   TableBody,
@@ -28,11 +28,7 @@ const Package = () => {
   const [totalpackages, setTotalpackages] = useState(0);
   const [search, setSearch] = useState('');
 
-  useEffect(() => {
-    fetchData();
-  }, [page, rowsPerPage, search, totalpackages]);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const data = await fetchPackages(search, page, rowsPerPage);
       setPackages(data.data);
@@ -40,20 +36,31 @@ const Package = () => {
     } catch (error) {
       console.error('Error fetching package:', error);
     }
-  };
+  }, [page, rowsPerPage, search]);
+  
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      fetchData();
+    }, 500);
+  
+    return () => clearTimeout(delayDebounceFn);
+  }, [fetchData, search]);
 
   const handleDelete = async (id) => {
     console.log("delete with id: ", id);
     try {
-      const success = await deletePackage(id);
-      if (success) {
-        setPackages(packages.filter((hobby) => hobby.id !== id));
-        setTotalpackages(totalpackages - 1);
-      }
+        const response = await deletePackage(id);
+        
+        if (response.status === 200) { // Kiểm tra mã trạng thái HTTP 200
+            setPackages(packages.filter((packaged) => packaged.id !== id));
+            setTotalpackages(totalpackages - 1);
+            
+        }
     } catch (error) {
-      console.error('Error deleting hobby:', error);
+        console.error('Error deleting package:', error);
     }
-  };
+};
+
 
   const handleEdit = (packageData) => {
     setCurrentPackage(packageData);
@@ -111,7 +118,7 @@ const Package = () => {
           style={{ borderRadius: '5px', width: '300px' }}
         />
         <Button onClick={handleCreate} variant="contained" color="primary">
-          Add Hobby
+          Add Package
         </Button>
       </div>
       <TableContainer component={Paper} sx={{ borderRadius: '5px 5px 0 0', marginTop: '10px', minHeight: '300px' }}>

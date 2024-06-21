@@ -95,11 +95,13 @@ export async function fetchPackages(search, page, pageSize) {
 }
 
 export async function deletePackage(id) {
+  const token = localStorage.getItem('token');
   try {
     const response = await fetch(`${BASE_URL}/package/${id}`, {
       method: 'DELETE',
       headers: {
-        accept: '*/*'
+        accept: '*/*',
+        "Authorize": `Bearer ${token}`
       }
     });
 
@@ -115,11 +117,13 @@ export async function deletePackage(id) {
 }
 
 export async function updatePackage(pkg) {
+  const token = localStorage.getItem('token');
   try {
     const response = await fetch(`${BASE_URL}/package`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authorize": `Bearer ${token}`
       },
       body: JSON.stringify(pkg)
     });
@@ -136,11 +140,13 @@ export async function updatePackage(pkg) {
 }
 
 export async function createPackage(pkg) {
+  const token = localStorage.getItem('token');
   try {
     const response = await fetch(`${BASE_URL}/package`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authorize": `Bearer ${token}`
       },
       body: JSON.stringify(pkg)
     });
