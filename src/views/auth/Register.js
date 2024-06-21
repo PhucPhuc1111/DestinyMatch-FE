@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 import logoDark from '../../assets/images/logo-dark.png';
 import Breadcrumb from '../../layouts/AdminLayout/Breadcrumb';
+import NotificationPopUp from '../../components/Card/NotificationPopUp';
 
 //===================================================================================================
 //Main Method With View Page
@@ -12,9 +13,10 @@ const Register = () => {
   //Declare
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [notificationTitle, setNotificationTitle] = useState('');
+  const [notificationMessage, setNotificationMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-
+  const navigate = useNavigate();
 
   //On Submit Handle Method
   const handleSubmit = async (e) => {
@@ -22,12 +24,12 @@ const Register = () => {
 
     // Validate the email address
     if (!isValidEmail(email)) {
-      setErrorMessage('Invalid email address!');
+      showNotification('VALIDATION', 'Invalid email address!', false);
       return;
     }
     if (password.trim() === '') {
       // Password is empty
-      setErrorMessage('Cannot set empty Password!');
+      showNotification('VALIDATION', 'Cannot set empty Password!', false);
       return;
     }
 
@@ -43,24 +45,24 @@ const Register = () => {
 
       if (response.ok) {
         console.log('Account created successfully');
-        alert('Account created successfully');
+        showNotification('RESULT', 'Account created successfully.', true);
+
         // Reset the form fields
         setEmail('');
         setPassword('');
-        setErrorMessage('');
 
       } else {
         const error = await response.text();
         console.log('Account creation failed:', error);
 
         // Handle the error accordingly
-        setErrorMessage(error.message);
+        showNotification('RESULT', error.message, false);
       }
     } catch (error) {
       console.log('Error:', error);
 
       // Handle any network or other errors
-      setErrorMessage('An error occurred while creating the account. Please try again later.');
+      showNotification('ERROR', 'An error occurred while creating the account. Please try again later.', false);
     }
   };
 
@@ -71,12 +73,27 @@ const Register = () => {
     setShowPassword(!showPassword);
   };
 
+  const showNotification = (title, message, isSuccess) => {
+    setNotificationTitle(title);
+    setNotificationMessage(message);
+
+    setTimeout(() => {
+      setNotificationTitle('');
+      setNotificationMessage('');
+
+      if (isSuccess) { navigate('/login') };
+    }, 3500);
+  };
+
   //UI View Page
   return (
     <React.Fragment>
       <Breadcrumb />
       <div className="auth-wrapper">
-      
+
+        {notificationMessage &&
+          <NotificationPopUp textTitle={notificationTitle} textContent={notificationMessage}/>}
+
         <div className="auth-content text-center">
           <Card className="borderless">
             <Row className="align-items-center text-center">
@@ -108,12 +125,11 @@ const Register = () => {
                     </div>
                     <button type="submit" className="btn btn-primary btn-block mb-4">Sign up</button>
                   </form>
-                  {errorMessage && <div>{errorMessage}</div>}
 
                   <p className="mb-2">
                     Already have an account?{' '}
                     <NavLink to="/login" className="f-w-400">
-                      Signin
+                      Login
                     </NavLink>
                   </p>
                 </Card.Body>
