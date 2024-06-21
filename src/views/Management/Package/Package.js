@@ -169,7 +169,7 @@ const Package = () => {
           </TableHead>
           <TableBody>
             {sortedpackages.map((hobby) => (
-              <TableRow key={hobby.id} sx={{ background: 'rgb(246,247,251)' }}>
+              <TableRow key={hobby.id} sx={{ background: 'rgb(246 ,247,251)' }}>
                 <TableCell>{hobby.code}</TableCell>
                 <TableCell>{hobby.name}</TableCell>
                 <TableCell>{hobby.description}</TableCell>
