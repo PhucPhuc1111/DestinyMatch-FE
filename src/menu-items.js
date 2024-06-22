@@ -11,7 +11,7 @@ const menuItems = {
           title: 'Dashboard',
           type: 'item',
           icon: 'feather icon-home',
-          url: '/home/analytics'
+          url: '/app/dashboard'
         }
       ]
     },
