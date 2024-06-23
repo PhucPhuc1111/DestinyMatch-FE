@@ -40,8 +40,13 @@ const HobbyTable = () => {
         console.error('Error fetching hobbies:', error);
       }
     };
-    fetchData();
-  }, [page, rowsPerPage, search, hobbies, totalHobbies]);
+
+    const timeoutId = setTimeout(() => {
+      fetchData();
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  }, [page, rowsPerPage, search, totalHobbies]);
 
   const handleDelete = async (id) => {
     try {

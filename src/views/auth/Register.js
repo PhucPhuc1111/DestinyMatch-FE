@@ -4,17 +4,17 @@ import { NavLink, Link } from 'react-router-dom';
 
 import logoDark from '../../assets/images/logo-dark.png';
 import Breadcrumb from '../../layouts/AdminLayout/Breadcrumb';
+import { FaRegEyeSlash } from 'react-icons/fa';
+import { FaEye } from 'react-icons/fa';
 
 //===================================================================================================
 //Main Method With View Page
 const Register = () => {
-
   //Declare
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-
 
   //On Submit Handle Method
   const handleSubmit = async (e) => {
@@ -36,9 +36,9 @@ const Register = () => {
       const response = await fetch('https://localhost:7215/api/accounts/register', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password })
       });
 
       if (response.ok) {
@@ -48,7 +48,6 @@ const Register = () => {
         setEmail('');
         setPassword('');
         setErrorMessage('');
-
       } else {
         const error = await response.text();
         console.log('Account creation failed:', error);
@@ -75,8 +74,7 @@ const Register = () => {
   return (
     <React.Fragment>
       <Breadcrumb />
-      <div className="auth-wrapper">
-      
+      <div className="auth-wrapper" style={{ background: 'linear-gradient(to right, #FFE5B4, #FFC085)' }}>
         <div className="auth-content text-center">
           <Card className="borderless">
             <Row className="align-items-center text-center">
@@ -87,16 +85,28 @@ const Register = () => {
 
                   <form onSubmit={handleSubmit}>
                     <div className="input-group mb-3">
-                      <input required type="email" className="form-control" placeholder="user123@example.com"
-                        value={email} onChange={(e) => setEmail(e.target.value)} />
+                      <input
+                        required
+                        type="email"
+                        className="form-control"
+                        placeholder="user123@example.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
                     </div>
 
                     <div className="input-group mb-4">
-                      <input required type={showPassword ? 'text' : 'password'} className="form-control" placeholder="abc123..."
-                        value={password} onChange={(e) => setPassword(e.target.value)} />
+                      <input
+                        required
+                        type={showPassword ? 'text' : 'password'}
+                        className="form-control"
+                        placeholder="abc123..."
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
 
-                      <button type="button" onClick={toggleShowPassword}>
-                        {showPassword ? 'Hide' : 'Show'}
+                      <button type="button" onClick={toggleShowPassword} style={{ background: 'red' }}>
+                        {showPassword ? <FaRegEyeSlash /> : <FaEye />}
                       </button>
                     </div>
 
@@ -106,7 +116,9 @@ const Register = () => {
                         Send me the <Link to="#"> Newsletter</Link> weekly.
                       </label>
                     </div>
-                    <button type="submit" className="btn btn-primary btn-block mb-4">Sign up</button>
+                    <button type="submit" className="btn btn-primary btn-block mb-4" style={{ background: 'rgb(252, 112, 156)' }}>
+                      Sign up
+                    </button>
                   </form>
                   {errorMessage && <div>{errorMessage}</div>}
 

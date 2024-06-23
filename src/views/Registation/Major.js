@@ -40,8 +40,11 @@ const Major = () => {
         console.error('Error fetching majors:', error);
       }
     };
-    fetchData();
-  }, [page, rowsPerPage, search, majors, totalMajors]);
+    const timeoutId = setTimeout(() => {
+      fetchData();
+    }, 300);
+    return () => clearTimeout(timeoutId);
+  }, [page, rowsPerPage, search, totalMajors]);
 
   const handleDelete = async (id) => {
     try {

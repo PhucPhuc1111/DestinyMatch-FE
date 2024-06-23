@@ -11,7 +11,7 @@ const Login = () => {
   return (
     <React.Fragment>
       <Breadcrumb />
-      <div className="auth-wrapper">
+      <div className="auth-wrapper" style={{ background: 'linear-gradient(to right, #FFE5B4, #FFC085)' }}>
         <div className="auth-content text-center">
           <Card className="borderless">
             <Card.Body>
@@ -23,6 +23,7 @@ const Login = () => {
                 <div className="input-group mb-4">
                   <input type="password" className="form-control" placeholder="Password" />
                 </div>
+                <button style={{ background: 'rgb(252, 112, 156)', borderRadius: '3px', width: '80px', height: '30px' }}>Login</button>
               </form>
               <p className="mb-0 text-muted">
                 Don’t have an account?{' '}

@@ -40,7 +40,10 @@ const University = () => {
         console.error('Error fetching universities:', error);
       }
     };
-    fetchData();
+    const timeoutId = setTimeout(() => {
+      fetchData();
+    }, 300);
+    return () => clearTimeout(timeoutId);
   }, [page, rowsPerPage, search, totalUniversities]);
 
   const handleDelete = async (id) => {
