@@ -32,6 +32,10 @@ const renderRoutes = (routes = []) => (
 
 export const routes = [
   {
+    path: '/',
+    element: lazy(() => import('./views/Home/Home'))
+  },
+  {
     path: '/login',
     element: lazy(() => import('./views/auth/Login'))
   },
@@ -44,7 +48,7 @@ export const routes = [
     layout: AdminLayout,
     routes: [
       {
-        path: '/home',
+        path: '/dashboard',
         element: lazy(() => import('./views/dashboard'))
       },
       {

@@ -9,7 +9,6 @@ import NotificationPopUp from '../../components/Card/NotificationPopUp';
 //===================================================================================================
 //Main Method With View Page
 const Register = () => {
-
   //Declare
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,9 +37,9 @@ const Register = () => {
       const response = await fetch('https://localhost:7215/api/accounts/register', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password })
       });
 
       if (response.ok) {
@@ -50,7 +49,6 @@ const Register = () => {
         // Reset the form fields
         setEmail('');
         setPassword('');
-
       } else {
         const error = await response.text();
         console.log('Account creation failed:', error);
@@ -104,16 +102,28 @@ const Register = () => {
 
                   <form onSubmit={handleSubmit}>
                     <div className="input-group mb-3">
-                      <input required type="email" className="form-control" placeholder="user123@example.com"
-                        value={email} onChange={(e) => setEmail(e.target.value)} />
+                      <input
+                        required
+                        type="email"
+                        className="form-control"
+                        placeholder="user123@example.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
                     </div>
 
                     <div className="input-group mb-4">
-                      <input required type={showPassword ? 'text' : 'password'} className="form-control" placeholder="abc123..."
-                        value={password} onChange={(e) => setPassword(e.target.value)} />
+                      <input
+                        required
+                        type={showPassword ? 'text' : 'password'}
+                        className="form-control"
+                        placeholder="abc123..."
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
 
-                      <button type="button" onClick={toggleShowPassword}>
-                        {showPassword ? 'Hide' : 'Show'}
+                      <button type="button" onClick={toggleShowPassword} style={{ background: 'red' }}>
+                        {showPassword ? <FaRegEyeSlash /> : <FaEye />}
                       </button>
                     </div>
 
@@ -123,7 +133,9 @@ const Register = () => {
                         Send me the <Link to="#"> Newsletter</Link> weekly.
                       </label>
                     </div>
-                    <button type="submit" className="btn btn-primary btn-block mb-4">Sign up</button>
+                    <button type="submit" className="btn btn-primary btn-block mb-4" style={{ background: 'rgb(252, 112, 156)' }}>
+                      Sign up
+                    </button>
                   </form>
 
                   <p className="mb-2">

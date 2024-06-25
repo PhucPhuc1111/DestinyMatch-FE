@@ -1,5 +1,3 @@
-// HobbyTable.js
-
 import React, { useState, useEffect } from 'react';
 import {
   Table,
@@ -12,7 +10,8 @@ import {
   IconButton,
   TableSortLabel,
   Button,
-  Pagination
+  Pagination,
+  CircularProgress
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -26,22 +25,35 @@ const HobbyTable = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [currentHobby, setCurrentHobby] = useState(null);
   const [page, setPage] = useState(1);
-  const [rowsPerPage, setRowPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [totalHobbies, setTotalHobbies] = useState(0);
   const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const data = await fetchHobbies(search, page, rowsPerPage);
         setHobbies(data.hobbies);
         setTotalHobbies(data.count);
       } catch (error) {
         console.error('Error fetching hobbies:', error);
+      } finally {
+        setLoading(false);
       }
     };
-    fetchData();
-  }, [page, rowsPerPage, search, hobbies, totalHobbies]);
+
+    const timeoutId = setTimeout(() => {
+      fetchData();
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  }, [page, rowsPerPage, search]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [search, rowsPerPage]);
 
   const handleDelete = async (id) => {
     try {
@@ -107,55 +119,68 @@ const HobbyTable = () => {
           placeholder="Search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ borderRadius: '5px', width: '300px', padding: '10px' }}
+          style={{
+            width: '300px',
+            padding: '10px',
+            outline: 'none',
+            border: 'none',
+            borderBottom: '2px solid #FFC085'
+          }}
         />
-        <Button onClick={handleCreate} variant="contained" color="primary">
+        <Button onClick={handleCreate} variant="contained" style={{ background: '#FFC085' }}>
           Add Hobby
         </Button>
       </div>
-      <TableContainer component={Paper} sx={{ borderRadius: '5px 5px 0 0', marginTop: '10px', minHeight: '300px' }}>
-        <Table>
-          <TableHead>
-            <TableRow sx={{ background: '#ccc', height: '25px' }}>
-              <TableCell sx={{ fontSize: '19px', fontWeight: 700, padding: '8px', letterSpacing: '1px', color: '#fff' }}>
-                <TableSortLabel
-                  active={orderBy === 'name'}
-                  direction={orderBy === 'name' ? order : 'asc'}
-                  onClick={() => handleRequestSort('name')}
-                >
-                  Name
-                </TableSortLabel>
-              </TableCell>
-              <TableCell sx={{ fontSize: '19px', fontWeight: 700, padding: '8px', letterSpacing: '1px', color: '#fff' }}>
-                <TableSortLabel
-                  active={orderBy === 'description'}
-                  direction={orderBy === 'description' ? order : 'asc'}
-                  onClick={() => handleRequestSort('description')}
-                >
-                  Description
-                </TableSortLabel>
-              </TableCell>
-              <TableCell sx={{ fontSize: '19px', fontWeight: 700, padding: '8px', letterSpacing: '1px', color: '#fff' }}>Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sortedHobbies.map((hobby) => (
-              <TableRow key={hobby.id} sx={{ background: 'rgb(246,247,251)' }}>
-                <TableCell>{hobby.name}</TableCell>
-                <TableCell>{hobby.description}</TableCell>
-                <TableCell>
-                  <IconButton onClick={() => handleEdit(hobby)}>
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton onClick={() => handleDelete(hobby.id)}>
-                    <DeleteIcon />
-                  </IconButton>
+
+      {loading ? (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '500px' }}>
+          <CircularProgress style={{ color: '#FFC085' }} />
+        </div>
+      ) : (
+        <TableContainer component={Paper} sx={{ borderRadius: '5px', marginTop: '10px', minHeight: '300px' }}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow sx={{ height: '25px' }}>
+                <TableCell sx={{ fontSize: '16px', fontWeight: 700, color: '#2e2e2e', width: '30%' }}>
+                  <TableSortLabel
+                    active={orderBy === 'name'}
+                    direction={orderBy === 'name' ? order : 'asc'}
+                    onClick={() => handleRequestSort('name')}
+                  >
+                    Name
+                  </TableSortLabel>
                 </TableCell>
+                <TableCell sx={{ fontSize: '16px', fontWeight: 700, color: '#2e2e2e', width: '55%' }}>
+                  <TableSortLabel
+                    active={orderBy === 'description'}
+                    direction={orderBy === 'description' ? order : 'asc'}
+                    onClick={() => handleRequestSort('description')}
+                  >
+                    Description
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell sx={{ fontSize: '16px', fontWeight: 700, color: '#2e2e2e', width: '15%' }}>Action</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {sortedHobbies.map((hobby) => (
+                <TableRow key={hobby.id} sx={{ background: 'rgb(243,247,251)' }}>
+                  <TableCell sx={{ width: '30%' }}>{hobby.name}</TableCell>
+                  <TableCell sx={{ width: '55%' }}>{hobby.description}</TableCell>
+                  <TableCell sx={{ width: '15%' }}>
+                    <IconButton onClick={() => handleEdit(hobby)} style={{ color: '#FFC085' }}>
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton onClick={() => handleDelete(hobby.id)} style={{ color: 'orangered' }}>
+                      <DeleteIcon />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
       <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '10px', marginTop: '20px' }}>
         {rowsPerPage >= 1 && rowsPerPage <= 25 ? (
           <label>Rows Per Page:</label>
@@ -164,12 +189,12 @@ const HobbyTable = () => {
         )}
         <input
           value={rowsPerPage}
-          onChange={(e) => setRowPerPage(e.target.value)}
+          onChange={(e) => setRowsPerPage(e.target.value)}
           type="number"
           min={1}
           max={25}
           style={{ width: '50px' }}
-        ></input>
+        />
       </div>
       <Pagination
         count={Math.ceil(totalHobbies / rowsPerPage)}
