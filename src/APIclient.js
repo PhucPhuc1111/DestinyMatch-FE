@@ -1,6 +1,6 @@
 // APIClient.js
 
-const BASE_URL = 'https://localhost:7215/api';
+const BASE_URL = 'https://destiny-match.azurewebsites.net/api';
 
 /* =============== Hobby ===============*/
 export async function fetchHobbies(search, page, pageSize) {
