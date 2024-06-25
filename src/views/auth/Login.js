@@ -6,9 +6,9 @@ import logoDark from '../../assets/images/logo-dark.png';
 import Breadcrumb from '../../layouts/AdminLayout/Breadcrumb';
 import NotificationPopUp from '../../components/Card/NotificationPopUp';
 import SvgIcons from '../../components/Button/SvgIcons';
+import GoogleAuthentication from '../../components/Button/GoogleAuthentication';
 
 const Login = () => {
-  
   //Declare
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,19 +45,18 @@ const Login = () => {
       const response = await fetch('https://localhost:7215/api/accounts/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password })
       });
-        const data = await response.json();
+      const data = await response.json();
       if (response.ok) {
-        window.localStorage.setItem("jwt-token", data.token);
+        window.localStorage.setItem('jwt-token', data.token);
         navigate('/home');
 
         // Reset the form fields
         setEmail('');
         setPassword('');
-
       } else {
         const error = await response.text();
 
@@ -94,9 +93,7 @@ const Login = () => {
     <React.Fragment>
       <Breadcrumb />
       <div className="auth-wrapper">
-
-        {notificationMessage &&
-          <NotificationPopUp textTitle={notificationTitle} textContent={notificationMessage} />}
+        {notificationMessage && <NotificationPopUp textTitle={notificationTitle} textContent={notificationMessage} />}
 
         <div className="auth-content text-center">
           <Card className="borderless">
@@ -107,28 +104,45 @@ const Login = () => {
                   <h4 className="mb-3 f-w-400">Login</h4>
 
                   <div className="input-group mb-3">
-                    <input type="email" className="form-control" placeholder="Email address"
-                    value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="Email address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
 
                   <div className="input-group mb-4">
-                    <input type="password" className="form-control" placeholder="Password"
-                    value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
 
-                    <button type="button" onClick={toggleShowPassword} className="btn" style={{
-                      position: 'absolute',
-                      right: '0px',
-                      border: 'none',
-                      zIndex: '500'
-                    }}>
-                      {showPassword ? <SvgIcons name='eye-slash' /> : <SvgIcons name='eye' />}
+                    <button
+                      type="button"
+                      onClick={toggleShowPassword}
+                      className="btn"
+                      style={{
+                        position: 'absolute',
+                        right: '0px',
+                        border: 'none',
+                        zIndex: '500'
+                      }}
+                    >
+                      {showPassword ? <SvgIcons name="eye-slash" /> : <SvgIcons name="eye" />}
                     </button>
                   </div>
 
-                  <button type="submit" className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Sign In</button>
+                  <button type="submit" className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>
+                    Sign In
+                  </button>
 
-                  <p className="mb-2">
-                    Google
+                  <p className="mb-2" style={{ display: 'flex', justifyContent: 'center' }}>
+                    <GoogleAuthentication />
                   </p>
 
                   <p className="mb-0 text-muted">
