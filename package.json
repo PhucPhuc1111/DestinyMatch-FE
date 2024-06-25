@@ -9,6 +9,7 @@
     "@lordicon/react": "^1.6.0",
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
+    "@react-oauth/google": "^0.12.1",
     "@reduxjs/toolkit": "^1.8.5",
     "@tanem/react-nprogress": "^5.0.14",
     "@vercel/speed-insights": "^1.0.12",

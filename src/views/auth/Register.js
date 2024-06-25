@@ -5,6 +5,8 @@ import { NavLink, Link, useNavigate } from 'react-router-dom';
 import logoDark from '../../assets/images/logo-dark.png';
 import Breadcrumb from '../../layouts/AdminLayout/Breadcrumb';
 import NotificationPopUp from '../../components/Card/NotificationPopUp';
+import SvgIcons from '../../components/Button/SvgIcons';
+import GoogleAuthentication from '../../components/Button/GoogleAuthentication';
 
 //===================================================================================================
 //Main Method With View Page
@@ -15,7 +17,15 @@ const Register = () => {
   const [notificationTitle, setNotificationTitle] = useState('');
   const [notificationMessage, setNotificationMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [notificationTimeout, setNotificationTimeout] = useState(null); // Added state for timeout
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Clear the notification timeout when component unmounts
+    return () => {
+      clearTimeout(notificationTimeout);
+    };
+  }, [notificationTimeout]);
 
   //On Submit Handle Method
   const handleSubmit = async (e) => {
@@ -51,7 +61,6 @@ const Register = () => {
         setPassword('');
       } else {
         const error = await response.text();
-        console.log('Account creation failed:', error);
 
         // Handle the error accordingly
         showNotification('RESULT', error.message, false);
@@ -75,12 +84,14 @@ const Register = () => {
     setNotificationTitle(title);
     setNotificationMessage(message);
 
-    setTimeout(() => {
+    clearTimeout(notificationTimeout);
+    const timeout = setTimeout(() => {
       setNotificationTitle('');
       setNotificationMessage('');
 
       if (isSuccess) { navigate('/login') };
     }, 3500);
+    setNotificationTimeout(timeout);
   };
 
   //UI View Page
@@ -90,7 +101,7 @@ const Register = () => {
       <div className="auth-wrapper">
 
         {notificationMessage &&
-          <NotificationPopUp textTitle={notificationTitle} textContent={notificationMessage}/>}
+          <NotificationPopUp textTitle={notificationTitle} textContent={notificationMessage} />}
 
         <div className="auth-content text-center">
           <Card className="borderless">
@@ -100,43 +111,36 @@ const Register = () => {
                   <img src={logoDark} alt="" className="img-fluid mb-4" />
                   <h4 className="mb-3 f-w-400">Register</h4>
 
-                  <form onSubmit={handleSubmit}>
-                    <div className="input-group mb-3">
-                      <input
-                        required
-                        type="email"
-                        className="form-control"
-                        placeholder="user123@example.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
+                  <div className="input-group mb-3">
+                    <input type="email" className="form-control" placeholder="user123@example.com"
+                      value={email} onChange={(e) => setEmail(e.target.value)} />
+                  </div>
 
-                    <div className="input-group mb-4">
-                      <input
-                        required
-                        type={showPassword ? 'text' : 'password'}
-                        className="form-control"
-                        placeholder="abc123..."
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-
-                      <button type="button" onClick={toggleShowPassword} style={{ background: 'red' }}>
-                        {showPassword ? <FaRegEyeSlash /> : <FaEye />}
-                      </button>
-                    </div>
-
-                    <div className="custom-control custom-checkbox  text-start mb-4 mt-2">
-                      <input type="checkbox" className="custom-control-input" id="customCheck1" defaultChecked={false} />
-                      <label className="custom-control-label mx-2" htmlFor="customCheck1">
-                        Send me the <Link to="#"> Newsletter</Link> weekly.
-                      </label>
-                    </div>
-                    <button type="submit" className="btn btn-primary btn-block mb-4" style={{ background: 'rgb(252, 112, 156)' }}>
-                      Sign up
+                  <div className="input-group mb-4">
+                    <input type={showPassword ? 'text' : 'password'} className="form-control" placeholder="abc123..."
+                      value={password} onChange={(e) => setPassword(e.target.value)} />
+                      
+                    <button type="button" onClick={toggleShowPassword}  className="btn" style={{
+                      position: 'absolute',
+                      right: '0px',
+                      border: 'none',
+                      zIndex: '500'
+                    }}>
+                      {showPassword ? <SvgIcons name='eye-slash'/> :<SvgIcons name='eye'/>}
                     </button>
-                  </form>
+                  </div>
+
+                  <div className="custom-control custom-checkbox  text-start mb-4 mt-2">
+                    <input type="checkbox" className="custom-control-input" id="customCheck1" defaultChecked={false} />
+                    <label className="custom-control-label mx-2" htmlFor="customCheck1">
+                      Send me the <Link to="#"> Newsletter</Link> weekly.
+                    </label>
+                  </div>
+                  <button type="submit" className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Sign up</button>
+
+                  <p className="mb-2">
+                    <GoogleAuthentication/>
+                  </p>
 
                   <p className="mb-2">
                     Already have an account?{' '}

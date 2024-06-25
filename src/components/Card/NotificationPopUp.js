@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import '../../assets/scss/themes/components/_pop-up-notification.scss';
 
 const NotificationPopUp = ({ textTitle, textContent }) => {

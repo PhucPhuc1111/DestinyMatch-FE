@@ -5,6 +5,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import OrderCard from '../../components/Widgets/Statistic/OrderCard';
 
 const DashAnalytics = () => {
+  window.localStorage.getItem("jwt-token");
   return (
     <React.Fragment>
       <Row>
