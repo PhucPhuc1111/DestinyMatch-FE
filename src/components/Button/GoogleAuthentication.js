@@ -1,41 +1,49 @@
 import React from 'react';
-import googleAPI from '../../config/googleAuth.json';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import { GoogleLogin } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import googleConfig from '../../config/googleAuth.json';
 
 const GoogleAuthentication = () => {
-  const handleSuccess = (credentialResponse) => {
-    // Extract the user's email from the credentialResponse object
-    const userEmail = credentialResponse.profileObj.email;
+  const navigate = useNavigate();
+  const handleSuccess = async (GoogleResponse) => {
+    try {
+      const googleToken = GoogleResponse.credential;
 
-    // Make an API call to send the user's email information
-    fetch('https://localhost:7215/api/accounts/google-authentication', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email: userEmail }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the API response here
-        console.log(data);
-      })
-      .catch((error) => {
-        // Handle any errors that occur during the API call
-        console.error(error);
+      // Make an API call to send google token
+      const response = await fetch('https://localhost:7215/api/accounts/google-authentication', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          token: googleToken,
+          platform: 'web'
+        })
       });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("jwt-token", data.token);
+        navigate('/dashboard');
+
+      } else {
+        const errorResult = await response.text();
+        console.log("There is an error while fetch api /google-authentication: ", errorResult);
+      }
+
+    } catch (fetchError) {
+      console.log("There is an error while connect to our server: ", fetchError);
+    }
+  };
+
+  const handleError = () => {
+    console.log("Error during Google login!");
   };
 
   return (
     <div>
-      <GoogleOAuthProvider clientId={googleAPI.web.client_id}>
-        <GoogleLogin
-          onSuccess={handleSuccess}
-          onError={() => {
-            console.log('Login Failed');
-          }}
-        />
+      <GoogleOAuthProvider clientId={googleConfig.web.client_id}>
+        <GoogleLogin text='continue_with' onSuccess={handleSuccess} onError={handleError} />
       </GoogleOAuthProvider>
     </div>
   );
