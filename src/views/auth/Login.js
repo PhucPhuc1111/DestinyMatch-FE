@@ -63,7 +63,6 @@ const Login = () => {
         // Reset the form fields
         setEmail('');
         setPassword('');
-
       } else {
         const errorResult = await response.text();
 
@@ -100,9 +99,7 @@ const Login = () => {
     <React.Fragment>
       <Breadcrumb />
       <div className="auth-wrapper">
-
-        {notificationMessage &&
-          <NotificationPopUp textTitle={notificationTitle} textContent={notificationMessage} />}
+        {notificationMessage && <NotificationPopUp textTitle={notificationTitle} textContent={notificationMessage} />}
 
         <div className="auth-content text-center">
           <Card className="borderless">
@@ -121,19 +118,26 @@ const Login = () => {
                     <input type="password" className="form-control" placeholder="Password"
                       value={password} onChange={(e) => setPassword(e.target.value)} />
 
-                    <button type="button" onClick={toggleShowPassword} className="btn" style={{
-                      position: 'absolute',
-                      right: '0px',
-                      border: 'none',
-                      zIndex: '500'
-                    }}>
-                      {showPassword ? <SvgIcons name='eye-slash' /> : <SvgIcons name='eye' />}
+                    <button
+                      type="button"
+                      onClick={toggleShowPassword}
+                      className="btn"
+                      style={{
+                        position: 'absolute',
+                        right: '0px',
+                        border: 'none',
+                        zIndex: '500'
+                      }}
+                    >
+                      {showPassword ? <SvgIcons name="eye-slash" /> : <SvgIcons name="eye" />}
                     </button>
                   </div>
 
-                  <button type="submit" className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Sign In</button>
+                  <button type="submit" className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>
+                    Sign In
+                  </button>
 
-                  <p className="mb-2">
+                  <p className="mb-2" style={{ display: 'flex', justifyContent: 'center' }}>
                     <GoogleAuthentication />
                   </p>
 

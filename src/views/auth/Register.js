@@ -89,7 +89,9 @@ const Register = () => {
       setNotificationTitle('');
       setNotificationMessage('');
 
-      if (isSuccess) { navigate('/login') };
+      if (isSuccess) {
+        navigate('/login');
+      }
     }, 3500);
     setNotificationTimeout(timeout);
   };
@@ -99,9 +101,7 @@ const Register = () => {
     <React.Fragment>
       <Breadcrumb />
       <div className="auth-wrapper">
-
-        {notificationMessage &&
-          <NotificationPopUp textTitle={notificationTitle} textContent={notificationMessage} />}
+        {notificationMessage && <NotificationPopUp textTitle={notificationTitle} textContent={notificationMessage} />}
 
         <div className="auth-content text-center">
           <Card className="borderless">
@@ -112,21 +112,36 @@ const Register = () => {
                   <h4 className="mb-3 f-w-400">Register</h4>
 
                   <div className="input-group mb-3">
-                    <input type="email" className="form-control" placeholder="user123@example.com"
-                      value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="user123@example.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
 
                   <div className="input-group mb-4">
-                    <input type={showPassword ? 'text' : 'password'} className="form-control" placeholder="abc123..."
-                      value={password} onChange={(e) => setPassword(e.target.value)} />
-                      
-                    <button type="button" onClick={toggleShowPassword}  className="btn" style={{
-                      position: 'absolute',
-                      right: '0px',
-                      border: 'none',
-                      zIndex: '500'
-                    }}>
-                      {showPassword ? <SvgIcons name='eye-slash'/> :<SvgIcons name='eye'/>}
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      className="form-control"
+                      placeholder="abc123..."
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+
+                    <button
+                      type="button"
+                      onClick={toggleShowPassword}
+                      className="btn"
+                      style={{
+                        position: 'absolute',
+                        right: '0px',
+                        border: 'none',
+                        zIndex: '500'
+                      }}
+                    >
+                      {showPassword ? <SvgIcons name="eye-slash" /> : <SvgIcons name="eye" />}
                     </button>
                   </div>
 
@@ -136,10 +151,12 @@ const Register = () => {
                       Send me the <Link to="#"> Newsletter</Link> weekly.
                     </label>
                   </div>
-                  <button type="submit" className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Sign up</button>
+                  <button type="submit" className="btn btn-primary btn-block mb-4" onClick={handleSubmit}>
+                    Sign up
+                  </button>
 
-                  <p className="mb-2">
-                    <GoogleAuthentication/>
+                  <p className="mb-2" style={{ display: 'flex', justifyContent: 'center' }}>
+                    <GoogleAuthentication />
                   </p>
 
                   <p className="mb-2">

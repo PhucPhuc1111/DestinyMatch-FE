@@ -2,6 +2,9 @@
 
 const BASE_URL = 'https://destiny-match.azurewebsites.net/api';
 
+/* =============== Account ===============*/
+/* =============== End Account ===============*/
+
 /* =============== Hobby ===============*/
 export async function fetchHobbies(search, page, pageSize) {
   try {
@@ -311,3 +314,6 @@ export async function createPackage(pkg) {
 }
 
 /* =============== End Package ===============*/
+
+/* =============== Member ===============*/
+/* =============== End Member ===============*/

@@ -1,126 +1,126 @@
 .notification-popup-container {
-    display: flex;
-    flex-direction: column;
-    isolation: isolate;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999 !important;
-    width: 18rem;
-    height: 8rem;
-    background: #29292c;
-    border-radius: 1rem;
-    overflow: hidden;
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
-    font-size: 16px;
-    --gradient: linear-gradient(135deg, rgb(213, 30, 94) 0%, rgb(252, 112, 156) 29%, rgb(255, 209, 218) 100%);
-    --color: #fc709c
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999 !important;
+  width: 18rem;
+  height: 100px;
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+  font-size: 16px;
+  --gradient: linear-gradient(135deg, rgb(213, 30, 94) 0%, rgb(252, 112, 156) 29%, rgb(255, 209, 218) 100%);
+  --color: #fc709c;
 }
 
 .notification-popup-container:before {
-    position: absolute;
-    content: "";
-    inset: 0.0625rem;
-    border-radius: 0.9375rem;
-    background: #18181b;
-    z-index: 2
+  position: absolute;
+  content: '';
+  inset: 0.0625rem;
+  border-radius: 0.9375rem;
+  background: #fff;
+  z-index: 2;
 }
 
 .notification-popup-container:after {
-    position: absolute;
-    content: "";
-    width: 0.25rem;
-    inset: 0.65rem auto 0.65rem 0.5rem;
-    border-radius: 0.125rem;
-    background: var(--gradient);
-    transition: transform 300ms ease;
-    z-index: 4;
+  position: absolute;
+  content: '';
+  width: 0.25rem;
+  inset: 0.65rem auto 0.65rem 0.5rem;
+  border-radius: 0.125rem;
+  background: var(--gradient);
+  transition: transform 300ms ease;
+  z-index: 4;
 }
 
 .notification-popup-timeout-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 0px 10px 3px;
-    border-radius: 20px;
-    height:5px;
-    background-color: #f6fa60;
-    animation: durationProgress 3.5s linear;
-    z-index: 10;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0px 10px 3px;
+  border-radius: 20px;
+  height: 5px;
+  background-color: #f6fa60;
+  animation: durationProgress 3.5s linear;
+  z-index: 10;
 }
 
 @keyframes durationProgress {
-    0% {
-        width: 100%;
-    }
+  0% {
+    width: 100%;
+  }
 
-    100% {
-        width: 0%;
-    }
+  100% {
+    width: 0%;
+  }
 }
 
 .notification-popup-container:hover:after {
-    transform: translateX(0.15rem)
+  transform: translateX(0.15rem);
 }
 
 .notification-popup-title {
-    color: var(--color);
-    padding: 0.65rem 0.25rem 0.4rem 1.25rem;
-    font-weight: 500;
-    font-size: 1.1rem;
-    transition: transform 300ms ease;
-    z-index: 5;
+  color: var(--color);
+  padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: transform 300ms ease;
+  z-index: 5;
 }
 
 .notification-popup-container:hover .notititle {
-    transform: translateX(0.15rem)
+  transform: translateX(0.15rem);
 }
 
 .notification-popup-body {
-    color: #ffffff;
-    padding: 0 1.25rem;
-    transition: transform 300ms ease;
-    z-index: 5;
+  color: #000;
+  padding: 0 1.25rem;
+  transition: transform 300ms ease;
+  z-index: 5;
 }
 
 .notification-popup-container:hover .notibody {
-    transform: translateX(0.25rem)
+  transform: translateX(0.25rem);
 }
 
 .notification-popup-glow,
 .notification-popup-border-glow {
-    position: absolute;
-    width: 20rem;
-    height: 20rem;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle closest-side at center, white, transparent);
-    opacity: 0;
-    transition: opacity 300ms ease;
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle closest-side at center, white, transparent);
+  opacity: 0;
+  transition: opacity 300ms ease;
 }
 
 .notification-popup-glow {
-    z-index: 3;
+  z-index: 3;
 }
 
 .notification-popup-border-glow {
-    z-index: 1;
+  z-index: 1;
 }
 
 .notification-popup-container:hover .notiglow {
-    opacity: 0.1
+  opacity: 0.1;
 }
 
 .notification-popup-container:hover .notiborderglow {
-    opacity: 0.1
+  opacity: 0.1;
 }
 
 .note {
-    color: var(--color);
-    position: fixed;
-    top: 80%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    font-size: 0.9rem;
-    width: 75%;
+  color: var(--color);
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.9rem;
+  width: 75%;
 }
