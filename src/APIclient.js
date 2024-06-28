@@ -19,6 +19,19 @@ export async function fetchHobbies(search, page, pageSize) {
   }
 }
 
+export async function fetchHobby(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/hobby/${id}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch hobby');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching hobby:', error);
+    throw error;
+  }
+}
+
 export async function deleteHobby(id) {
   try {
     const response = await fetch(`${BASE_URL}/hobby/${id}`, {
@@ -92,6 +105,19 @@ export async function fetchMajors(search, page, pageSize) {
     return await response.json();
   } catch (error) {
     console.error('Error fetching hobbies:', error);
+    throw error;
+  }
+}
+
+export async function fetchMajor(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/major/${id}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch major');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching major:', error);
     throw error;
   }
 }
@@ -174,6 +200,19 @@ export async function fetchUniversities(search, page, pageSize) {
   }
 }
 
+export async function fetchUniversity(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/university/${id}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch university');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching university:', error);
+    throw error;
+  }
+}
+
 export async function deleteUniversity(id) {
   try {
     const response = await fetch(`${BASE_URL}/university/${id}`, {
@@ -251,6 +290,19 @@ export async function fetchPackages(search, page, pageSize) {
   }
 }
 
+export async function fetchPackage(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/package/${id}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch package');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching package:', error);
+    throw error;
+  }
+}
+
 export async function deletePackage(id) {
   try {
     const response = await fetch(`${BASE_URL}/package/${id}`, {
@@ -316,4 +368,92 @@ export async function createPackage(pkg) {
 /* =============== End Package ===============*/
 
 /* =============== Member ===============*/
+export async function fetchMembers(search, page, pageSize) {
+  try {
+    const response = await fetch(`${BASE_URL}/member?search=${search}&page=${page}&pagesize=${pageSize}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching members:', error);
+    throw error;
+  }
+}
+
+export async function fetchMember(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/member/${id}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch member');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching member:', error);
+    throw error;
+  }
+}
+
+export async function deleteMember(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/member/${id}`, {
+      method: 'DELETE',
+      headers: {
+        accept: '*/*'
+      }
+    });
+
+    if (response.status === 204) {
+      return true;
+    } else {
+      throw new Error('Failed to delete member');
+    }
+  } catch (error) {
+    console.error('Error deleting member:', error);
+    throw error;
+  }
+}
+
+export async function updateMember(member) {
+  try {
+    const response = await fetch(`${BASE_URL}/member/${member.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(member)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update member');
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Error updating member:', error);
+    throw error;
+  }
+}
+
+export async function createMember(member) {
+  try {
+    const response = await fetch(`${BASE_URL}/member`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(member)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create member');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error creating member:', error);
+    throw error;
+  }
+}
+
 /* =============== End Member ===============*/

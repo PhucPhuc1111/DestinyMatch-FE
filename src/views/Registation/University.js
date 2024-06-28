@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { fetchUniversities, deleteUniversity, updateUniversity, createUniversity } from '../../APIclient';
+import { fetchUniversities, fetchUniversity, deleteUniversity, updateUniversity, createUniversity } from '../../APIclient';
 import GeneralDialog from './Dialog';
 
 const UniversityTable = () => {
@@ -67,9 +67,14 @@ const UniversityTable = () => {
     }
   };
 
-  const handleEdit = (university) => {
-    setCurrentUniversity(university);
-    setDialogOpen(true);
+  const handleEdit = async (id) => {
+    try {
+      const university = await fetchUniversity(id);
+      setCurrentUniversity(university);
+      setDialogOpen(true);
+    } catch (error) {
+      console.error('Error fetching hobby:', error);
+    }
   };
 
   const handleCreate = () => {
@@ -168,7 +173,7 @@ const UniversityTable = () => {
                   <TableCell>{university.name}</TableCell>
                   <TableCell>{university.code}</TableCell>
                   <TableCell>
-                    <IconButton onClick={() => handleEdit(university)} style={{ color: '#FFC085' }}>
+                    <IconButton onClick={() => handleEdit(university.id)} style={{ color: '#FFC085' }}>
                       <EditIcon />
                     </IconButton>
                     <IconButton onClick={() => handleDelete(university.id)} style={{ color: 'orangered' }}>

@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { createPackage, deletePackage, fetchPackages, updatePackage } from '../../../APIclient';
+import { createPackage, fetchPackage, deletePackage, fetchPackages, updatePackage } from '../../../APIclient';
 import PackageDialog from './PackageDIalog';
 
 const Package = () => {
@@ -63,9 +63,14 @@ const Package = () => {
     }
   };
 
-  const handleEdit = (packageData) => {
-    setCurrentPackage(packageData);
-    setDialogOpen(true);
+  const handleEdit = async (id) => {
+    try {
+      const packageData = await fetchPackage(id);
+      setCurrentPackage(packageData);
+      setDialogOpen(true);
+    } catch (error) {
+      console.error('Error fetching hobby:', error);
+    }
   };
 
   const handleCreate = () => {
@@ -134,7 +139,7 @@ const Package = () => {
 
       {loading ? (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '500px' }}>
-          <CircularProgress />
+          <CircularProgress style={{ color: '#FFC085' }} />
         </div>
       ) : (
         <TableContainer component={Paper} sx={{ borderRadius: '5px', marginTop: '10px', minHeight: '300px' }}>
@@ -188,7 +193,7 @@ const Package = () => {
                   <TableCell>{packagedata.description}</TableCell>
                   <TableCell>{packagedata.price}</TableCell>
                   <TableCell>
-                    <IconButton onClick={() => handleEdit(packagedata)}>
+                    <IconButton onClick={() => handleEdit(packagedata.id)}>
                       <EditIcon />
                     </IconButton>
                     <IconButton onClick={() => handleDelete(packagedata.id)}>

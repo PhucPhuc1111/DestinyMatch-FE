@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { fetchMajors, deleteMajor, updateMajor, createMajor } from '../../APIclient';
+import { fetchMajors, fetchMajor, deleteMajor, updateMajor, createMajor } from '../../APIclient';
 import GeneralDialog from './Dialog';
 
 const MajorTable = () => {
@@ -67,9 +67,14 @@ const MajorTable = () => {
     }
   };
 
-  const handleEdit = (major) => {
-    setCurrentMajor(major);
-    setDialogOpen(true);
+  const handleEdit = async (id) => {
+    try {
+      const major = await fetchMajor(id);
+      setCurrentMajor(major);
+      setDialogOpen(true);
+    } catch (error) {
+      console.error('Error fetching major:', error);
+    }
   };
 
   const handleCreate = () => {
@@ -168,7 +173,7 @@ const MajorTable = () => {
                   <TableCell>{major.name}</TableCell>
                   <TableCell>{major.code}</TableCell>
                   <TableCell>
-                    <IconButton onClick={() => handleEdit(major)} style={{ color: '#FFC085' }}>
+                    <IconButton onClick={() => handleEdit(major.id)} style={{ color: '#FFC085' }}>
                       <EditIcon />
                     </IconButton>
                     <IconButton onClick={() => handleDelete(major.id)} style={{ color: 'orangered' }}>

@@ -16,7 +16,7 @@ import {
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HobbyDialog from './HobbyDialog';
-import { fetchHobbies, deleteHobby, updateHobby, createHobby } from '../../APIclient';
+import { fetchHobbies, fetchHobby, deleteHobby, updateHobby, createHobby } from '../../APIclient';
 
 const HobbyTable = () => {
   const [hobbies, setHobbies] = useState([]);
@@ -67,9 +67,14 @@ const HobbyTable = () => {
     }
   };
 
-  const handleEdit = (hobby) => {
-    setCurrentHobby(hobby);
-    setDialogOpen(true);
+  const handleEdit = async (id) => {
+    try {
+      const hobby = await fetchHobby(id);
+      setCurrentHobby(hobby);
+      setDialogOpen(true);
+    } catch (error) {
+      console.error('Error fetching hobby:', error);
+    }
   };
 
   const handleCreate = () => {
@@ -168,7 +173,7 @@ const HobbyTable = () => {
                   <TableCell sx={{ width: '30%' }}>{hobby.name}</TableCell>
                   <TableCell sx={{ width: '55%' }}>{hobby.description}</TableCell>
                   <TableCell sx={{ width: '15%' }}>
-                    <IconButton onClick={() => handleEdit(hobby)} style={{ color: '#FFC085' }}>
+                    <IconButton onClick={() => handleEdit(hobby.id)} style={{ color: '#FFC085' }}>
                       <EditIcon />
                     </IconButton>
                     <IconButton onClick={() => handleDelete(hobby.id)} style={{ color: 'orangered' }}>
