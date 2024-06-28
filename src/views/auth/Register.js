@@ -54,16 +54,16 @@ const Register = () => {
 
       if (response.ok) {
         console.log('Account created successfully');
-        showNotification('RESULT', 'Account created successfully.', true);
+        showNotification('RESULT', 'Signup successfully.', true);
 
         // Reset the form fields
         setEmail('');
         setPassword('');
       } else {
-        const error = await response.text();
+        const errorResult = await response.text();
 
         // Handle the error accordingly
-        showNotification('RESULT', error.message, false);
+        showNotification('RESULT', errorResult.message, false);
       }
     } catch (error) {
       console.log('Error:', error);

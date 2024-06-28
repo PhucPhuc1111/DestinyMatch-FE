@@ -1,11 +1,49 @@
 import React from 'react';
+//{ useState, useEffect } from 'react';
 import { Row, Col, Card, Table } from 'react-bootstrap';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import { useNavigate } from 'react-router-dom';
 
 import OrderCard from '../../components/Widgets/Statistic/OrderCard';
 
+//===================================================================================================
+//Main Method With View Page
 const DashAnalytics = () => {
-  window.localStorage.getItem("jwt-token");
+  //Declare
+  const navigate = useNavigate();
+
+  //useEffect(() => {
+  //const fetchData = async () => {
+  const clientToken = localStorage.getItem('jwt-token');
+
+  if (!clientToken) {
+    // Redirect to login if no token
+    navigate('/login');
+    return;
+  };
+
+
+  // try {
+  //     const response = await fetch('https://yourapi.com/api/dashboard', {
+  //         headers: {
+  //             'Authorization': `Bearer ${token}`
+  //         }
+  //     });
+  //     setData(response.data);
+  // } catch (error) {
+  //     console.error('Failed to fetch data: ', error);
+  //     // Handle token expiration or invalid token
+  //     window.localStorage.removeItem("jwt-token");
+  //     window.location.href = '/login';
+  // }
+  //     };
+
+  //     fetchData();
+  // }, []);
+
+  // if (!data) {
+  //     return <div>Loading...</div>;
+  // }
   return (
     <React.Fragment>
       <Row>

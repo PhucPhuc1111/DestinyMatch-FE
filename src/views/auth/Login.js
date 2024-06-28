@@ -1,21 +1,26 @@
+//Package
 import React, { useState, useEffect } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 
+//Layout
 import logoDark from '../../assets/images/logo-dark.png';
 import Breadcrumb from '../../layouts/AdminLayout/Breadcrumb';
-import NotificationPopUp from '../../components/Card/NotificationPopUp';
+
+//Components
 import SvgIcons from '../../components/Button/SvgIcons';
+import NotificationPopUp from '../../components/Card/NotificationPopUp';
 import GoogleAuthentication from '../../components/Button/GoogleAuthentication';
 
 const Login = () => {
+
   //Declare
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [notificationTitle, setNotificationTitle] = useState('');
   const [notificationMessage, setNotificationMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [notificationTimeout, setNotificationTimeout] = useState(null); // Added state for timeout
+  const [notificationTimeout, setNotificationTimeout] = useState(''); // Added state for timeout
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,7 +41,7 @@ const Login = () => {
     }
     if (password.trim() === '') {
       // Password is empty
-      showNotification('VALIDATION', 'Cannot set empty Password!');
+      showNotification('VALIDATION', 'Cannot login with empty Password!');
       return;
     }
 
@@ -49,25 +54,26 @@ const Login = () => {
         },
         body: JSON.stringify({ email, password })
       });
-      const data = await response.json();
+
       if (response.ok) {
-        window.localStorage.setItem('jwt-token', data.token);
-        navigate('/home');
+        const data = await response.json();
+        localStorage.setItem("jwt-token", data.token);
+        navigate('/dashboard');
 
         // Reset the form fields
         setEmail('');
         setPassword('');
       } else {
-        const error = await response.text();
+        const errorResult = await response.text();
 
         // Handle the error accordingly
-        showNotification('RESULT', error.message);
+        showNotification('RESULT', errorResult.message);
       }
     } catch (error) {
       console.log('Error:', error);
 
       // Handle any network or other errors
-      showNotification('ERROR', 'An error occurred while creating the account. Please try again later.');
+      showNotification('ERROR', 'An error occurred while login. Please try again later.');
     }
   };
 
@@ -104,23 +110,13 @@ const Login = () => {
                   <h4 className="mb-3 f-w-400">Login</h4>
 
                   <div className="input-group mb-3">
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Email address"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
+                    <input type="email" className="form-control" placeholder="Email address"
+                      value={email} onChange={(e) => setEmail(e.target.value)} />
                   </div>
 
                   <div className="input-group mb-4">
-                    <input
-                      type="password"
-                      className="form-control"
-                      placeholder="Password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
+                    <input type="password" className="form-control" placeholder="Password"
+                      value={password} onChange={(e) => setPassword(e.target.value)} />
 
                     <button
                       type="button"
