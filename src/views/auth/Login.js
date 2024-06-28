@@ -42,7 +42,7 @@ const Login = () => {
 
     //Fetch
     try {
-      const response = await fetch('https://localhost:7215/api/accounts/login', {
+      const response = await fetch('https://destiny-match.azurewebsites.net/api/accounts/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

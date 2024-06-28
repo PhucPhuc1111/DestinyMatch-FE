@@ -44,7 +44,7 @@ const Register = () => {
 
     //Fetch
     try {
-      const response = await fetch('https://localhost:7215/api/accounts/register', {
+      const response = await fetch('https://destiny-match.azurewebsites.net/api/accounts/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

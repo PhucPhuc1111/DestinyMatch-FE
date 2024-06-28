@@ -9,12 +9,12 @@ const GoogleAuthentication = () => {
     const userEmail = credentialResponse.profileObj.email;
 
     // Make an API call to send the user's email information
-    fetch('https://localhost:7215/api/accounts/google-authentication', {
+    fetch('https://destiny-match.azurewebsites.net/api/accounts/google-authentication', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email: userEmail }),
+      body: JSON.stringify({ email: userEmail })
     })
       .then((response) => response.json())
       .then((data) => {
