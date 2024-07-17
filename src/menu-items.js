@@ -28,11 +28,11 @@ const menuItems = {
           icon: 'feather icon-layers',
           children: [
             {
-              id: 'university',
-              title: 'University',
+              id: 'hobbies',
+              title: 'Hobby',
               type: 'item',
-              icon: 'feather icon-book',
-              url: '/registation/university'
+              icon: 'feather icon-heart',
+              url: '/registation/hobby'
             },
             {
               id: 'major',
@@ -42,11 +42,11 @@ const menuItems = {
               url: '/registation/major'
             },
             {
-              id: 'hobbies',
-              title: 'Hobby',
+              id: 'university',
+              title: 'University',
               type: 'item',
-              icon: 'feather icon-heart',
-              url: '/registation/hobby'
+              icon: 'feather icon-book',
+              url: '/registation/university'
             }
           ]
         }
@@ -71,13 +71,6 @@ const menuItems = {
           type: 'item',
           icon: 'feather icon-package',
           url: '/management/package'
-        },
-        {
-          id: 'feedback',
-          title: 'Feedback',
-          type: 'item',
-          icon: 'feather icon-message-circle',
-          url: '/management/feedback'
         }
       ]
     }

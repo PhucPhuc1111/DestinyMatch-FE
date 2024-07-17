@@ -49,7 +49,7 @@ export const routes = [
     routes: [
       {
         path: '/dashboard',
-        element: lazy(() => import('./views/dashboard'))
+        element: lazy(() => import('./views/dashboard/index'))
       },
       {
         path: '/registation/university',
@@ -70,10 +70,6 @@ export const routes = [
       {
         path: '/management/package',
         element: lazy(() => import('./views/Management/Package/Package'))
-      },
-      {
-        path: '/management/feedback',
-        element: lazy(() => import('./views/Management/Feedback/Feedback'))
       },
       {
         path: '*',

@@ -20,8 +20,7 @@ const DashAnalytics = () => {
     // Redirect to login if no token
     navigate('/login');
     return;
-  };
-
+  }
 
   // try {
   //     const response = await fetch('https://yourapi.com/api/dashboard', {
