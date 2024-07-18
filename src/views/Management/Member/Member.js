@@ -210,7 +210,7 @@ const MemberTable = () => {
                 <TableRow key={member.id} sx={{ background: 'rgb(243,247,251)' }}>
                   <TableCell sx={{ width: '10%' }}>
                     <img
-                      src={member.pictures.length > 0 ? member.pictures[0]['url-path'] : defaultAvatar}
+                      src={member['url-path'][0] ?? defaultAvatar}
                       alt={member.fullname}
                       style={{ width: '60px', height: '60px', borderRadius: '50%' }}
                     />
