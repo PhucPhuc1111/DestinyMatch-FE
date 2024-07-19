@@ -1,5 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button, CircularProgress } from '@mui/material';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+  Button,
+  CircularProgress,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl
+} from '@mui/material';
 
 const MemberDialog = ({ open, handleClose, member, onSave }) => {
   const [formValues, setFormValues] = useState({
@@ -8,11 +20,7 @@ const MemberDialog = ({ open, handleClose, member, onSave }) => {
     dob: '',
     gender: '',
     address: '',
-    status: '',
-    surplus: '',
-    accountId: '',
-    universityId: '',
-    majorId: ''
+    status: ''
   });
   const [loading, setLoading] = useState(false);
 
@@ -22,13 +30,9 @@ const MemberDialog = ({ open, handleClose, member, onSave }) => {
         fullname: member.fullname || '',
         introduce: member.introduce || '',
         dob: member.dob || '',
-        gender: member.gender || '',
+        gender: member.gender !== undefined ? member.gender : '',
         address: member.address || '',
-        status: member.status || '',
-        surplus: member.surplus || '',
-        accountId: member.accountId || '',
-        universityId: member.universityId || '',
-        majorId: member.majorId || ''
+        status: member.status || ''
       });
     } else {
       setFormValues({
@@ -37,11 +41,7 @@ const MemberDialog = ({ open, handleClose, member, onSave }) => {
         dob: '',
         gender: '',
         address: '',
-        status: '',
-        surplus: '',
-        accountId: '',
-        universityId: '',
-        majorId: ''
+        status: ''
       });
     }
   }, [member]);
@@ -99,16 +99,13 @@ const MemberDialog = ({ open, handleClose, member, onSave }) => {
           onChange={handleChange}
           InputLabelProps={{ shrink: true }}
         />
-        <TextField
-          margin="dense"
-          name="gender"
-          label="Gender"
-          type="text"
-          fullWidth
-          variant="outlined"
-          value={formValues.gender}
-          onChange={handleChange}
-        />
+        <FormControl fullWidth margin="dense" variant="outlined">
+          <InputLabel>Gender</InputLabel>
+          <Select name="gender" value={formValues.gender} onChange={handleChange} label="Gender">
+            <MenuItem value={true}>Male</MenuItem>
+            <MenuItem value={false}>Female</MenuItem>
+          </Select>
+        </FormControl>
         <TextField
           margin="dense"
           name="address"
@@ -127,46 +124,6 @@ const MemberDialog = ({ open, handleClose, member, onSave }) => {
           fullWidth
           variant="outlined"
           value={formValues.status}
-          onChange={handleChange}
-        />
-        <TextField
-          margin="dense"
-          name="surplus"
-          label="Surplus"
-          type="text"
-          fullWidth
-          variant="outlined"
-          value={formValues.surplus}
-          onChange={handleChange}
-        />
-        <TextField
-          margin="dense"
-          name="accountId"
-          label="Account ID"
-          type="text"
-          fullWidth
-          variant="outlined"
-          value={formValues.accountId}
-          onChange={handleChange}
-        />
-        <TextField
-          margin="dense"
-          name="universityId"
-          label="University ID"
-          type="text"
-          fullWidth
-          variant="outlined"
-          value={formValues.universityId}
-          onChange={handleChange}
-        />
-        <TextField
-          margin="dense"
-          name="majorId"
-          label="Major ID"
-          type="text"
-          fullWidth
-          variant="outlined"
-          value={formValues.majorId}
           onChange={handleChange}
         />
       </DialogContent>

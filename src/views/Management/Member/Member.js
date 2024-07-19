@@ -8,21 +8,17 @@ import {
   TableRow,
   Paper,
   IconButton,
-  TableSortLabel,
-  Button,
   Pagination,
   CircularProgress
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MemberDialog from './MemberDialog.js';
-import { fetchMembers, fetchMember, deleteMember, updateMember, createMember } from '../../../APIclient';
+import { fetchMembers, fetchMember, deleteMember, updateMember } from '../../../APIclient';
 import defaultAvatar from '../../../assets/images/default-avatar.png';
 
 const MemberTable = () => {
   const [members, setMembers] = useState([]);
-  const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('fullname');
   const [dialogOpen, setDialogOpen] = useState(false);
   const [currentMember, setCurrentMember] = useState(null);
   const [page, setPage] = useState(1);
@@ -78,26 +74,11 @@ const MemberTable = () => {
     }
   };
 
-  const handleCreate = () => {
-    setCurrentMember(null);
-    setDialogOpen(true);
-  };
-
-  const handleRequestSort = (property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
-
   const handleSave = async (member) => {
     try {
       if (member.id) {
         await updateMember(member);
         setMembers(members.map((m) => (m.id === member.id ? member : m)));
-      } else {
-        const createdMember = await createMember(member);
-        setMembers([...members, createdMember]);
-        setTotalMembers(totalMembers + 1);
       }
       setDialogOpen(false);
     } catch (error) {
@@ -108,14 +89,6 @@ const MemberTable = () => {
   const handleChangePage = (event, value) => {
     setPage(value);
   };
-
-  const sortedMembers = members.slice().sort((a, b) => {
-    if (order === 'asc') {
-      return a[orderBy].localeCompare(b[orderBy]);
-    } else {
-      return b[orderBy].localeCompare(a[orderBy]);
-    }
-  });
 
   return (
     <>
@@ -133,9 +106,6 @@ const MemberTable = () => {
             borderBottom: '2px solid #FFC085'
           }}
         />
-        <Button onClick={handleCreate} variant="contained" style={{ background: '#FFC085' }}>
-          Add Member
-        </Button>
       </div>
 
       {loading ? (
@@ -148,69 +118,21 @@ const MemberTable = () => {
             <TableHead>
               <TableRow sx={{ height: '25px' }}>
                 <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '10%' }}>Picture</TableCell>
-                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '20%' }}>
-                  <TableSortLabel
-                    active={orderBy === 'fullname'}
-                    direction={orderBy === 'fullname' ? order : 'asc'}
-                    onClick={() => handleRequestSort('fullname')}
-                  >
-                    Full Name
-                  </TableSortLabel>
-                </TableCell>
-                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '25%' }}>
-                  <TableSortLabel
-                    active={orderBy === 'introduce'}
-                    direction={orderBy === 'introduce' ? order : 'asc'}
-                    onClick={() => handleRequestSort('introduce')}
-                  >
-                    Introduce
-                  </TableSortLabel>
-                </TableCell>
-                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '15%' }}>
-                  <TableSortLabel
-                    active={orderBy === 'dob'}
-                    direction={orderBy === 'dob' ? order : 'asc'}
-                    onClick={() => handleRequestSort('dob')}
-                  >
-                    Date of Birth
-                  </TableSortLabel>
-                </TableCell>
-                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '10%' }}>
-                  <TableSortLabel
-                    active={orderBy === 'gender'}
-                    direction={orderBy === 'gender' ? order : 'asc'}
-                    onClick={() => handleRequestSort('gender')}
-                  >
-                    Gender
-                  </TableSortLabel>
-                </TableCell>
-                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '15%' }}>
-                  <TableSortLabel
-                    active={orderBy === 'address'}
-                    direction={orderBy === 'address' ? order : 'asc'}
-                    onClick={() => handleRequestSort('address')}
-                  >
-                    Address
-                  </TableSortLabel>
-                </TableCell>
-                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '15%' }}>
-                  <TableSortLabel
-                    active={orderBy === 'status'}
-                    direction={orderBy === 'status' ? order : 'asc'}
-                    onClick={() => handleRequestSort('status')}
-                  >
-                    Status
-                  </TableSortLabel>
-                </TableCell>
+                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '20%' }}>Full Name</TableCell>
+                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '25%' }}>Introduce</TableCell>
+                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '15%' }}>Date of Birth</TableCell>
+                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '10%' }}>Gender</TableCell>
+                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '15%' }}>Address</TableCell>
+                <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '15%' }}>Status</TableCell>
                 <TableCell sx={{ fontSize: '13px', fontWeight: 700, color: '#2e2e2e', width: '15%' }}>Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {sortedMembers.map((member) => (
+              {members.map((member) => (
                 <TableRow key={member.id} sx={{ background: 'rgb(243,247,251)' }}>
                   <TableCell sx={{ width: '10%' }}>
                     <img
-                      src={member.pictures.length > 0 ? member.pictures[0]['url-path'] : defaultAvatar}
+                      src={member['url-path'].length > 0 ? member['url-path'][0] : defaultAvatar}
                       alt={member.fullname}
                       style={{ width: '60px', height: '60px', borderRadius: '50%' }}
                     />
